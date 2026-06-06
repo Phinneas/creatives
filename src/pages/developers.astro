@@ -1,0 +1,233 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Nav from '../components/Nav.astro'
+import Footer from '../components/Footer.astro'
+import HeroArt from '../components/HeroArt.astro'
+---
+
+<Layout
+  title="Salish Sea Creatives — Astro templates your clients can actually use"
+  description="Production-ready Astro starters pre-wired for client handoff. Pages CMS, Payload, and Directus — your client edits, you move on."
+>
+  <Nav page="developers" />
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-h">
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-depth" aria-hidden="true"></div>
+      <HeroArt />
+
+      <div class="wrap">
+        <div class="hero-inner">
+          <p class="eyebrow"><span class="dot">●</span>&nbsp; 48.6° N&nbsp;&nbsp;122.9° W &nbsp;·&nbsp; For Developers &amp; Agencies</p>
+          <h1 id="hero-h">Astro templates your clients can actually use.</h1>
+          <p class="sub">Production-ready Astro starters pre-wired for client handoff. <strong>Pages CMS, Payload, and Directus</strong> — your client edits, you move on.</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#templates">Browse Templates <span class="arr" aria-hidden="true">→</span></a>
+            <a class="btn btn-ghost" href="https://portage.tools" target="_blank" rel="noopener noreferrer">Portage migration tools</a>
+          </div>
+          <div class="hero-meta" aria-hidden="true">
+            <span class="chip"><b>Astro 6</b></span>
+            <span class="chip"><b>TypeScript</b></span>
+            <span class="chip"><b>Tailwind v4</b></span>
+            <span class="chip">Client-editable</span>
+            <span class="chip">Static output</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CMS STRIP -->
+    <section class="cms" aria-label="CMS integrations">
+      <div class="wrap">
+        <p class="cms-label">The client-handoff problem — solved for each budget</p>
+        <div class="bento">
+          <div class="bento-tile wide"><span class="glyph" aria-hidden="true"></span><span class="bt-name">Pages CMS</span><span class="bt-desc">Zero cost · email invite · one config file · client needs no GitHub account</span></div>
+          <div class="bento-tile wide"><span class="glyph" aria-hidden="true"></span><span class="bt-name">Payload CMS</span><span class="bt-desc">TypeScript-native · self-hosted · schema ships with template · premium admin UI</span></div>
+          <div class="bento-tile wide"><span class="glyph" aria-hidden="true"></span><span class="bt-name">Directus</span><span class="bt-desc">Database-first · REST + GraphQL · agency-tier · self-hosted on Railway or Render</span></div>
+          <div class="bento-tile"><span class="glyph" aria-hidden="true"></span><span class="bt-name">Decap CMS</span><span class="bt-desc">19K stars · git-based</span></div>
+          <div class="bento-tile soon"><span class="glyph" aria-hidden="true"></span><span class="bt-name">Storyblok</span><span class="bt-desc">Agency tier only</span><span class="soon-tag">soon</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEMPLATES -->
+    <section class="section-pad" id="templates" aria-labelledby="tpl-h">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow">Templates</p>
+          <h2 id="tpl-h" style="margin-top:14px;">Built for the client-handoff problem.</h2>
+          <p>Every template ships with a CMS your client can edit. You configure it once and hand it off. No support calls, no ongoing maintenance.</p>
+        </div>
+
+        <div class="track" role="group" aria-label="Astro starter templates — scroll horizontally" tabindex="0">
+
+          <article class="starter">
+            <span class="idx">01</span>
+            <h3>Local Business — Pages CMS</h3>
+            <p class="desc">Services, testimonials, team, gallery, contact. Your client edits everything via email invite — no GitHub account needed. Zero ongoing CMS cost.</p>
+            <div class="tags"><span class="tag">Astro 6</span><span class="tag">Pages CMS</span><span class="tag">TypeScript</span><span class="tag">Tailwind</span></div>
+            <p class="lead-note">Free on the Astro themes gallery.</p>
+            <div class="starter-foot">
+              <a class="preview-link" href="#">Preview <span aria-hidden="true">→</span></a>
+              <span class="buy-group"><span class="price free">Free</span><a class="buy buy-free" href="https://astro.build/themes/" target="_blank" rel="noopener noreferrer">Get it free</a></span>
+            </div>
+          </article>
+
+          <article class="starter">
+            <span class="idx">02</span>
+            <h3>Agency Portfolio — Payload CMS</h3>
+            <p class="desc">Case studies, services, team, and a blog. TypeScript end to end. Client edits in Payload's premium admin UI. Deploy Astro to Cloudflare Pages free, Payload to Railway at $5/mo.</p>
+            <div class="tags"><span class="tag">Astro 6</span><span class="tag">Payload CMS</span><span class="tag">TypeScript</span><span class="tag">Self-hosted</span></div>
+            <div class="starter-foot">
+              <a class="preview-link" href="#">Preview <span aria-hidden="true">→</span></a>
+              <span class="buy-group"><span class="price">$99</span><a class="buy" href="https://salishseacreatives.gumroad.com" target="_blank" rel="noopener noreferrer">Buy</a></span>
+            </div>
+          </article>
+
+          <article class="starter">
+            <span class="idx">03</span>
+            <h3>Marketing Site — Directus</h3>
+            <p class="desc">Multi-page marketing site with blog, team, and structured content. Directus REST API. Deploy on Railway or Render. Built for agencies managing multiple client sites.</p>
+            <div class="tags"><span class="tag">Astro 6</span><span class="tag">Directus</span><span class="tag">TypeScript</span><span class="tag">Agency</span></div>
+            <div class="starter-foot">
+              <a class="preview-link" href="#">Preview <span aria-hidden="true">→</span></a>
+              <span class="buy-group"><span class="price">$99</span><a class="buy" href="https://salishseacreatives.gumroad.com" target="_blank" rel="noopener noreferrer">Buy</a></span>
+            </div>
+          </article>
+
+          <article class="starter">
+            <span class="idx">04</span>
+            <h3>Blog — Decap CMS</h3>
+            <p class="desc">Clean blog template for clients already using Decap CMS. Git-based, zero database, 19K star installed base. One config file, standard Netlify CMS workflow.</p>
+            <div class="tags"><span class="tag">Astro 6</span><span class="tag">Decap CMS</span><span class="tag">Git-based</span><span class="tag">TypeScript</span></div>
+            <div class="starter-foot">
+              <a class="preview-link" href="#">Preview <span aria-hidden="true">→</span></a>
+              <span class="buy-group"><span class="price">$79</span><a class="buy" href="https://salishseacreatives.gumroad.com" target="_blank" rel="noopener noreferrer">Buy</a></span>
+            </div>
+          </article>
+
+          <article class="pass">
+            <span class="pass-label">All-access · best value</span>
+            <h3>Every template, one price.</h3>
+            <p class="desc">All live starters plus every future release. Unlimited client projects. Lifetime updates.</p>
+            <div class="perks">
+              <span><i aria-hidden="true"></i> Every template, today and future</span>
+              <span><i aria-hidden="true"></i> Unlimited client projects</span>
+              <span><i aria-hidden="true"></i> Lifetime updates</span>
+              <span><i aria-hidden="true"></i> One-time payment</span>
+            </div>
+            <div class="pass-foot">
+              <span class="pass-price">$149<span>one-time</span></span>
+              <a class="btn btn-primary" href="https://salishseacreatives.gumroad.com" target="_blank" rel="noopener noreferrer">Get all-access <span class="arr" aria-hidden="true">→</span></a>
+            </div>
+          </article>
+        </div>
+
+        <div class="soon-head reveal">
+          <p class="eyebrow"><span class="dot">●</span> Coming soon</p>
+        </div>
+        <div class="track" role="group" aria-label="Upcoming Astro templates — scroll horizontally" tabindex="0">
+          <article class="starter soon">
+            <span class="idx">05</span>
+            <h3>SaaS Landing Page — Payload CMS</h3>
+            <p class="desc">Bento grid hero, interactive pricing, blog. Payload block-based editor. Direct competitor to Ghost for publisher clients who need Astro's performance.</p>
+            <div class="tags"><span class="tag">Astro 6</span><span class="tag">Payload CMS</span><span class="tag">SaaS</span></div>
+            <div class="starter-foot"><span class="soon-pill">Coming soon</span></div>
+          </article>
+          <article class="starter soon">
+            <span class="idx">06</span>
+            <h3>Multi-author Blog — Payload CMS</h3>
+            <p class="desc">Multiple authors, categories, featured posts, RSS. Payload's rich content editor as the writing interface. Astro's zero-JS as the reader experience.</p>
+            <div class="tags"><span class="tag">Astro 6</span><span class="tag">Payload CMS</span><span class="tag">Multi-author</span></div>
+            <div class="starter-foot"><span class="soon-pill">Coming soon</span></div>
+          </article>
+          <article class="starter soon">
+            <span class="idx">07</span>
+            <h3>Agency Tier — Storyblok</h3>
+            <p class="desc">High-end agency marketing site. Visual editing. Built for teams with real budget. Note: Storyblok starts at $99/mo — agency clients only.</p>
+            <div class="tags"><span class="tag">Astro 6</span><span class="tag">Storyblok</span><span class="tag">Agency</span></div>
+            <div class="starter-foot"><span class="soon-pill">Coming soon</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- MIGRATION -->
+    <section class="section-pad migrate" id="migration" aria-labelledby="mig-h">
+      <div class="wrap migrate-grid">
+        <div class="reveal">
+          <p class="eyebrow"><span class="dot">●</span> Portage · Migration Toolkit</p>
+          <h2 id="mig-h">Moving to Astro? We built the ferry.</h2>
+          <p class="lead">Point Portage at your old platform. It carries your posts, pages, routes, and metadata across to Astro — structure intact.</p>
+          <a class="link" href="https://portage.tools" target="_blank" rel="noopener noreferrer">Explore Portage <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="converters reveal" style="--d:.12s">
+          <div class="conv"><span class="name">ghost2<b>astro</b></span><span class="route">Ghost <span class="a">→</span> Astro</span></div>
+          <div class="conv"><span class="name">gatsby2<b>astro</b></span><span class="route">Gatsby <span class="a">→</span> Astro</span></div>
+          <div class="conv"><span class="name">next2<b>astro</b></span><span class="route">Next.js <span class="a">→</span> Astro</span></div>
+          <div class="conv"><span class="name">squarespace2<b>astro</b></span><span class="route">Squarespace <span class="a">→</span> Astro</span></div>
+          <div class="conv"><span class="name">substack2<b>astro</b></span><span class="route">Substack <span class="a">→</span> Astro</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY ASTRO -->
+    <section class="section-pad why" id="why" aria-labelledby="why-h">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow">Why Astro</p>
+          <h2 id="why-h" style="margin-top:14px;">The right tool for client work.</h2>
+        </div>
+        <div class="why-grid">
+          <div class="reveal" style="--d:.05s">
+            <svg class="ic" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <rect x="6" y="6" width="28" height="28" rx="4"/>
+              <path d="M15 16l-4 4 4 4M25 16l4 4-4 4" stroke-width="1.5"/>
+            </svg>
+            <h3>Zero JS by default</h3>
+            <p>Pages ship as static HTML. Nothing hydrates until you ask it to. Lighthouse scores your clients can actually show off.</p>
+          </div>
+          <div class="reveal" style="--d:.15s">
+            <svg class="ic" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M20 6l14 7-14 7L6 13l14-7z"/>
+              <path d="M6 20l14 7 14-7M6 27l14 7 14-7" opacity=".55"/>
+            </svg>
+            <h3>Typed end to end</h3>
+            <p>Content collections and typed schemas wired in from the first commit. No runtime surprises, no mystery data shapes.</p>
+          </div>
+          <div class="reveal" style="--d:.25s">
+            <svg class="ic" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <rect x="5" y="9" width="11" height="9" rx="2"/>
+              <rect x="24" y="9" width="11" height="9" rx="2"/>
+              <rect x="14" y="23" width="12" height="9" rx="2"/>
+              <path d="M10 18v3h20v-3M20 18v5" opacity=".55"/>
+            </svg>
+            <h3>Framework agnostic islands</h3>
+            <p>Drop in React, Svelte, or Vue only where the page needs them. No full-app hydration tax.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer
+    tagline="Astro starters built for headless content."
+    col1={{ heading: 'Templates', links: [
+      { label: 'Local Business (Pages CMS)', href: '#templates' },
+      { label: 'Agency Portfolio (Payload)', href: '#templates' },
+      { label: 'Marketing Site (Directus)', href: '#templates' },
+    ]}}
+    col2={{ heading: 'Tools', links: [
+      { label: 'Portage', href: 'https://portage.tools', ext: true },
+      { label: 'ghost2astro', href: 'https://portage.tools', ext: true },
+      { label: 'wordpress2astro', href: 'https://portage.tools', ext: true },
+    ]}}
+    col3={{ heading: 'Studio', links: [
+      { label: 'About', href: '#why' },
+      { label: 'GitHub', href: 'https://github.com/salishseacreatives', ext: true },
+      { label: 'Contact', href: 'mailto:hello@salishseacreatives.com' },
+    ]}}
+  />
+</Layout>

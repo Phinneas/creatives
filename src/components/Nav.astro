@@ -1,0 +1,41 @@
+---
+interface Props {
+  page?: 'home' | 'developers' | 'authors' | 'organizations'
+}
+const { page = 'home' } = Astro.props
+---
+
+<header class="nav" id="top">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/" aria-label="Salish Sea Creatives home">
+      <svg class="mark" width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+        <path d="M3 17 C7 13, 9 13, 13 16 C17 19, 19 19, 23 15" stroke="#009689" stroke-width="1.4" fill="none"/>
+        <path d="M4 12 C8 8.5, 10 8.5, 13 11 C16 13.5, 18 13.5, 22 10" stroke="#009689" stroke-width="1.4" fill="none" opacity="0.65"/>
+        <path d="M5 7 C8.5 4.5, 10.5 4.5, 13 6.5 C15.5 8.5, 17.5 8.5, 21 6" stroke="#C77A0A" stroke-width="1.4" fill="none" opacity="0.8"/>
+      </svg>
+      Salish Sea Creatives
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+
+    <nav class="nav-links" id="navLinks" aria-label="Primary">
+      {page !== 'home' && <a href="/">← All templates</a>}
+      {page === 'home' && <a href="#templates">Templates</a>}
+      {page === 'home' && <a href="/developers">For Developers</a>}
+      {page === 'home' && <a href="/authors">For Authors</a>}
+      {page === 'home' && <a href="/organizations">For Organizations</a>}
+      {page === 'home' && <a href="#migration">Portage</a>}
+      {page === 'developers' && <a href="#templates">Templates</a>}
+      {page === 'developers' && <a href="#migration">Migration Tools</a>}
+      {page === 'developers' && <a href="#why">About</a>}
+      {page === 'developers' && <a class="ext" href="https://github.com/salishseacreatives" target="_blank" rel="noopener noreferrer">GitHub</a>}
+      {page === 'authors' && <a href="#templates">Templates</a>}
+      {page === 'authors' && <a href="#why">About</a>}
+      {page === 'organizations' && <a href="#templates">Templates</a>}
+      {page === 'organizations' && <a href="#credentials">Our credentials</a>}
+      <a href="mailto:hello@salishseacreatives.com">Contact</a>
+    </nav>
+  </div>
+</header>

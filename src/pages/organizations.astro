@@ -1,0 +1,148 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Nav from '../components/Nav.astro'
+import Footer from '../components/Footer.astro'
+import HeroArt from '../components/HeroArt.astro'
+---
+
+<Layout
+  title="Salish Sea Creatives — Templates for mission-driven organizations"
+  description="Premium Framer and Ghost templates designed for environmental nonprofits, conservation organizations, and sustainability brands. Built by a studio that shares your values."
+>
+  <Nav page="organizations" />
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-h">
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-depth" aria-hidden="true"></div>
+      <HeroArt />
+
+      <div class="wrap">
+        <div class="hero-inner">
+          <p class="eyebrow"><span class="dot">●</span>&nbsp; 48.6° N&nbsp;&nbsp;122.9° W &nbsp;·&nbsp; For Organizations</p>
+          <h1 id="hero-h">Your mission deserves a site that means it.</h1>
+          <p class="sub">Premium Framer and Ghost templates designed for environmental nonprofits, conservation organizations, and sustainability brands. <strong>Built by a studio that shares your values.</strong></p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#templates">Browse Organization Templates <span class="arr" aria-hidden="true">→</span></a>
+            <a class="btn btn-ghost" href="mailto:hello@salishseacreatives.com">Talk to us about setup</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CREDENTIALS STRIP -->
+    <section class="cms" id="credentials" aria-label="Studio background and credentials">
+      <div class="wrap">
+        <p class="cms-label">Studio background</p>
+        <div class="hero-meta">
+          <span class="chip">Sierra Club Washington</span>
+          <span class="chip">The Nature Conservancy</span>
+          <span class="chip">Blue Standard Certification</span>
+          <span class="chip">15+ years sustainability comms</span>
+          <span class="chip">Grant writing certified</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEMPLATES -->
+    <section class="section-pad" id="templates" aria-labelledby="tpl-h">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow">Templates</p>
+          <h2 id="tpl-h" style="margin-top:14px;">Templates built for mission-driven work.</h2>
+          <p>Premium Framer and Ghost templates for organizations that need to communicate authority and purpose.</p>
+        </div>
+
+        <div class="track" role="group" aria-label="Organization templates — scroll horizontally" tabindex="0">
+
+          <article class="starter">
+            <span class="idx">01</span>
+            <h3>Environmental nonprofit — Framer</h3>
+            <p class="desc">A full-featured nonprofit template built on Framer. Donation calls-to-action, program showcases, impact stats, and board-appropriate credibility signals. No code to deploy.</p>
+            <div class="tags"><span class="tag">Framer</span><span class="tag">No code</span><span class="tag">Setup included</span></div>
+            <div class="starter-foot">
+              <span class="price">$249</span>
+              <a class="buy" href="mailto:hello@salishseacreatives.com">Get this + setup →</a>
+            </div>
+          </article>
+
+          <article class="starter">
+            <span class="idx">02</span>
+            <h3>Conservation brand — Framer</h3>
+            <p class="desc">Built for conservation-focused brands that need to communicate both authority and urgency. Striking imagery blocks, mission-forward copy structure, and a donation/membership CTA system.</p>
+            <div class="tags"><span class="tag">Framer</span><span class="tag">No code</span><span class="tag">Setup included</span></div>
+            <div class="starter-foot">
+              <span class="price">$249</span>
+              <a class="buy" href="mailto:hello@salishseacreatives.com">Get this + setup →</a>
+            </div>
+          </article>
+
+          <article class="starter">
+            <span class="idx">03</span>
+            <h3>Sustainability publisher — Ghost</h3>
+            <p class="desc">A Ghost theme for sustainability organizations that publish — newsletters, member content, impact reports, and thought leadership. Membership support built in.</p>
+            <div class="tags"><span class="tag">Ghost</span><span class="tag">Memberships</span><span class="tag">Setup included</span></div>
+            <div class="starter-foot">
+              <span class="price">$249</span>
+              <a class="buy" href="mailto:hello@salishseacreatives.com">Get this + setup →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY US -->
+    <section class="section-pad why" id="why" aria-labelledby="why-h">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow">Why us</p>
+          <h2 id="why-h" style="margin-top:14px;">Why organizations choose us.</h2>
+        </div>
+        <div class="why-grid">
+          <div class="reveal" style="--d:.05s">
+            <svg class="ic" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M30 10C16 10 10 18 10 30c12 0 20-6 20-20z"/>
+              <path d="M14 26c6-2 10-7 12-13" opacity=".55"/>
+            </svg>
+            <h3>Values alignment</h3>
+            <p>We've volunteered with Sierra Club Washington and The Nature Conservancy. We understand your mission because we share it.</p>
+          </div>
+          <div class="reveal" style="--d:.15s">
+            <svg class="ic" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M20 6l11 9-11 19L9 15z"/><path d="M9 15h22" opacity=".5"/>
+            </svg>
+            <h3>Premium design</h3>
+            <p>Your organization's credibility depends on how it presents itself. These templates communicate authority and purpose.</p>
+          </div>
+          <div class="reveal" style="--d:.25s">
+            <svg class="ic" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M8 21l8 8 16-18"/>
+            </svg>
+            <h3>Setup included</h3>
+            <p>We handle the technical setup. You get a live site configured, branded, and ready to publish — so your team can focus on the work that matters.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer
+    tagline="Premium templates for organizations that mean it."
+    col1={{ heading: 'Templates', links: [
+      { label: 'Environmental nonprofit (Framer)', href: '#templates' },
+      { label: 'Conservation brand (Framer)', href: '#templates' },
+      { label: 'Sustainability publisher (Ghost)', href: '#templates' },
+    ]}}
+    col2={{ heading: 'Studio', links: [
+      { label: 'Our credentials', href: '#credentials' },
+      { label: 'Setup Service', href: 'mailto:hello@salishseacreatives.com' },
+      { label: 'Contact', href: 'mailto:hello@salishseacreatives.com' },
+    ]}}
+    col3={{ heading: 'Audiences', links: [
+      { label: 'Developers', href: '/developers' },
+      { label: 'Authors', href: '/authors' },
+      { label: 'Organizations', href: '/organizations' },
+    ]}}
+  />
+</Layout>
