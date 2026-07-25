@@ -63,7 +63,7 @@ const { title, description = 'Premium Astro, Ghost, and Framer templates for dev
       window.addEventListener('scroll', update, { passive: true })
     }
 
-    // Reveal on scroll
+    // Reveal on scroll (legacy .reveal — kept for non-home pages)
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     const reveals = document.querySelectorAll<HTMLElement>('.reveal')
     if (reduce || !('IntersectionObserver' in window)) {
@@ -75,6 +75,10 @@ const { title, description = 'Premium Astro, Ghost, and Framer templates for dev
       )
       reveals.forEach(el => io.observe(el))
     }
+  </script>
+  <script>
+    // Motion system (Lenis + GSAP + drift) — gated in motion.ts
+    import '../scripts/motion.ts'
   </script>
 </body>
 </html>

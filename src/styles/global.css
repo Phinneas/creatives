@@ -139,6 +139,52 @@ section { position: relative; }
   .js .reveal { opacity: 1; transform: none; transition: none; }
 }
 
+/* ---------- Feature 2: Scroll-triggered reveals ---------- */
+.js .fx {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+.js .fx.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .js .fx {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* ---------- Feature 3: Portage drift rows ---------- */
+[data-drift-direction] {
+  will-change: transform;
+}
+
+/* ---------- Feature 4: Parallax cards ---------- */
+.bento-tile.parallax-active {
+  will-change: transform;
+}
+
+/* ---------- Feature 5: Cursor hover preview ---------- */
+.hover-preview {
+  opacity: 0;
+  pointer-events: none !important;
+  transition: opacity 0.3s var(--ease);
+}
+.hover-preview img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hover-preview {
+    display: none !important;
+  }
+}
+
 /* ================= HERO ================= */
 .hero { position: relative; overflow: hidden; }
 .hero-grid {
