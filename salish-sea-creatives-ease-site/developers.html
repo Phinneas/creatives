@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Astro + CMS Templates for Developers — Salish Sea Creatives</title>
+  <meta name="description" content="Production-ready Astro templates wired to Pages CMS, Payload, Directus, and Storyblok. TypeScript, Tailwind v4, static output. No bloat." />
+  <meta name="theme-color" content="#F8F6F0" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Astro + CMS Templates for Developers — Salish Sea Creatives" />
+  <meta property="og:description" content="Production-ready Astro templates wired to Pages CMS, Payload, Directus, and Storyblok. TypeScript, Tailwind v4, static output. No bloat." />
+  <meta property="og:site_name" content="Salish Sea Creatives" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=DM+Sans:opsz,wght@9..40,400..600&display=swap" rel="stylesheet" />
+  <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+  <style>
+    :root{
+      /* Ease's structure, Salish Sea's green — teal-shifted sage family */
+      --forest:#0E3A33;        /* deep teal-green — headlines, dark blocks */
+      --forest-hover:#0A2B26;
+      --sage:#B7DBD3;          /* primary tinted block */
+      --mint:#CFE7E2;
+      --keylime:#DEF0EC;       /* palest tile */
+      --slate:#B6CED5;         /* dusty PNW blue */
+      --cream:#F8F6F0;         /* page */
+      --light:#FFFEFC;         /* cards */
+      --border:#E7E5DF;
+      --teal:#009689;          /* brand accent / links */
+      --gold:#FFB900;          /* used sparingly */
+      --ink:#0E3A33;
+      --body:#4C5B58;
+      --muted:#77857F;
+
+      --maxw:1280px;
+      --ease:cubic-bezier(.4,0,.2,1);
+      --r:20px;
+      --r-lg:26px;
+    }
+
+    *,*::before,*::after{box-sizing:border-box;}
+    html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+    @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+
+    body{
+      margin:0;background:var(--cream);color:var(--body);
+      font-family:'DM Sans',system-ui,-apple-system,sans-serif;
+      font-size:17px;line-height:1.6;
+      -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+      overflow-x:hidden;
+    }
+    /* Editorial serif display — Ease's signature register */
+    h1,h2,h3{
+      font-family:'Fraunces',Georgia,serif;
+      font-variation-settings:"SOFT" 0,"WONK" 0;
+      color:var(--ink);margin:0;font-weight:400;
+      letter-spacing:-0.015em;line-height:1.06;
+    }
+    p{margin:0;}
+    a{color:inherit;text-decoration:none;}
+
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(18px,4vw,36px);width:100%;}
+
+    /* small sans pill labels — Ease uses sans, not mono */
+    .label{
+      display:inline-block;align-self:flex-start;background:var(--slate);color:var(--forest);
+      font-size:14px;font-weight:500;padding:6px 13px;border-radius:8px;
+    }
+    .label.on-sage{background:var(--light);}
+    .label.quiet{background:var(--keylime);}
+
+    .skip{position:absolute;left:-9999px;top:0;background:var(--forest);color:#fff;padding:10px 16px;border-radius:8px;z-index:300;font-weight:600;}
+    .skip:focus{left:16px;top:16px;}
+    a:focus-visible,button:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:8px;}
+
+    /* ---------- Buttons ---------- */
+    .btn{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:15.5px;padding:13px 22px;border-radius:10px;border:1px solid transparent;transition:background .3s var(--ease),color .3s var(--ease),transform .3s var(--ease);white-space:nowrap;}
+    .btn-dark{background:var(--forest);color:#fff;}
+    .btn-dark:hover{background:var(--forest-hover);transform:translateY(-1px);}
+    .btn-light{background:var(--light);color:var(--forest);border-color:var(--border);}
+    .btn-light:hover{border-color:var(--forest);transform:translateY(-1px);}
+    .btn .arr{transition:transform .3s var(--ease);}
+    .btn:hover .arr{transform:translateX(4px);}
+
+    /* ---------- Nav (plain, sits on the page — Ease style) ---------- */
+    header.nav{background:var(--cream);}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;height:86px;}
+    .brand{display:flex;align-items:center;gap:10px;color:var(--forest);font-family:'Fraunces',Georgia,serif;font-variation-settings:"SOFT" 0,"WONK" 0;font-weight:500;font-size:23px;letter-spacing:-0.02em;}
+    .brand .mark{flex:none;}
+    .nav-links{display:flex;align-items:center;gap:28px;}
+    .nav-links a{color:var(--forest);font-size:15px;font-weight:500;opacity:.86;transition:opacity .25s var(--ease);}
+    .nav-links a:hover{opacity:1;}
+    .nav-toggle{display:none;background:none;border:1px solid var(--border);border-radius:10px;width:42px;height:38px;color:var(--forest);cursor:pointer;align-items:center;justify-content:center;}
+    .nav-toggle svg{width:18px;height:18px;}
+
+    /* ================= HERO MOSAIC ================= */
+    .hero{padding-bottom:clamp(28px,4vw,44px);}
+    .mosaic{display:grid;grid-template-columns:1fr 1.18fr;gap:14px;}
+    .col{display:flex;flex-direction:column;gap:14px;}
+    .tile{border-radius:var(--r-lg);}
+    .tile-sage{background:var(--sage);padding:clamp(30px,3.4vw,48px);flex:1;display:flex;flex-direction:column;justify-content:center;}
+    .tile-sage h1{font-size:clamp(40px,5.2vw,74px);}
+    .tile-sage .sub{margin-top:22px;color:#2F4A45;font-size:clamp(16px,1.3vw,18.5px);max-width:430px;}
+    .cta-tile{
+      background:var(--forest);border-radius:var(--r-lg);
+      padding:clamp(26px,2.6vw,34px) clamp(28px,3vw,40px);
+      display:flex;align-items:center;justify-content:space-between;gap:20px;
+      color:#fff;transition:background .3s var(--ease);
+    }
+    .cta-tile:hover{background:var(--forest-hover);}
+    .cta-tile span.t{font-family:'Fraunces',Georgia,serif;font-variation-settings:"SOFT" 0,"WONK" 0;font-size:clamp(22px,2.2vw,30px);color:#fff;}
+    .cta-tile .circle{width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;flex:none;transition:transform .3s var(--ease),background .3s var(--ease);}
+    .cta-tile:hover .circle{transform:translateX(5px);background:rgba(255,255,255,.22);}
+    .cta-tile .circle svg{width:22px;height:22px;stroke:#fff;}
+
+    /* product tile — floating cards + dotted connectors (Ease's CRM/EHR/RCM move) */
+    .tile-slate{background:var(--slate);padding:clamp(26px,3vw,44px);display:flex;flex-direction:column;justify-content:center;gap:16px;}
+    .flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:0;}
+    .fcard{background:var(--light);border-radius:16px;padding:18px 16px;box-shadow:0 4px 16px rgba(14,58,51,.08);display:flex;flex-direction:column;gap:10px;min-height:168px;}
+    .fcard .fh{font-family:'Fraunces',Georgia,serif;font-variation-settings:"SOFT" 0,"WONK" 0;font-size:18px;color:var(--ink);line-height:1.15;}
+    .fline{height:7px;border-radius:4px;background:var(--keylime);}
+    .fline.w80{width:80%;}
+    .fline.w60{width:60%;}
+    .fline.teal{background:rgba(0,150,137,.35);}
+    .fchip{align-self:flex-start;font-size:12px;font-weight:500;color:var(--forest);background:var(--keylime);border-radius:6px;padding:4px 9px;}
+    .dots{display:flex;align-items:center;justify-content:center;padding:0 8px;}
+    .dots svg{width:44px;height:14px;}
+    .dots path{stroke:rgba(14,58,51,.42);stroke-width:1.5;stroke-dasharray:2 4;fill:none;}
+    .flow-labels{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;text-align:center;}
+    .flow-labels span{font-size:13px;font-weight:500;color:var(--forest);background:var(--light);border-radius:8px;padding:5px 10px;justify-self:center;}
+    .flow-labels i{display:block;}
+
+    /* ================= COMPATIBLE ROW ================= */
+    .compat{padding:clamp(44px,5vw,72px) 0 clamp(18px,3vw,34px);text-align:center;}
+    .compat p{color:var(--muted);font-size:15.5px;}
+    .compat-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:clamp(22px,3.4vw,52px);margin-top:26px;}
+    .compat-row span{font-family:'Fraunces',Georgia,serif;font-variation-settings:"SOFT" 0,"WONK" 0;font-size:20px;color:var(--forest);opacity:.5;transition:opacity .3s var(--ease);}
+    .compat-row span:hover{opacity:.95;}
+
+    /* ================= STATEMENT SECTIONS ================= */
+    .statement{padding:clamp(78px,11vw,150px) 0;}
+    .statement .big{
+      font-family:'Fraunces',Georgia,serif;font-variation-settings:"SOFT" 0,"WONK" 0;
+      color:var(--ink);font-size:clamp(28px,3.9vw,50px);line-height:1.18;
+      max-width:930px;margin-top:26px;letter-spacing:-0.01em;
+    }
+    .sage-band{background:var(--sage);}
+    .sage-band .big{color:#0C332D;}
+
+    /* converging lines diagram — Ease's signature */
+    .converge{margin-top:clamp(36px,5vw,64px);position:relative;padding-left:118px;padding-right:142px;}
+    .converge svg{width:100%;height:auto;display:block;overflow:visible;}
+    .converge .ln{fill:none;stroke:#0C332D;stroke-width:1.5;stroke-opacity:.75;}
+    .converge .out{fill:none;stroke:#0C332D;stroke-width:2;}
+    /* labels aligned to the exact y of each line (SVG height is fixed, so % maps 1:1) */
+    .cv-from{position:absolute;left:0;top:0;height:230px;width:108px;}
+    .cv-from span{position:absolute;left:0;transform:translateY(-50%);font-size:13.5px;color:#2F4A45;white-space:nowrap;}
+    .cv-to{position:absolute;right:0;top:50%;transform:translateY(-50%);font-size:13.5px;font-weight:600;color:#0C332D;white-space:nowrap;}
+    @media (max-width:900px){
+      .converge{padding-left:0;padding-right:0;}
+      .cv-from,.cv-to{position:static;display:none;}
+    }
+
+    /* ================= LANE TILES ================= */
+    .lanes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:44px;}
+    .lane{background:var(--keylime);border-radius:var(--r-lg);padding:clamp(26px,2.6vw,34px);display:flex;flex-direction:column;gap:14px;min-height:290px;transition:background .3s var(--ease),transform .3s var(--ease);}
+    .lane:hover{background:var(--mint);transform:translateY(-4px);}
+    .lane:nth-child(2){background:var(--slate);}
+    .lane:nth-child(2):hover{background:#A9C4CD;}
+    .lane h3{font-size:clamp(24px,2.4vw,31px);}
+    .lane p{color:#3F524E;font-size:15.5px;}
+    .lane .foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:14px;padding-top:16px;}
+    .lane .from{font-size:14.5px;color:#3F524E;}
+    .lane .from b{color:var(--forest);font-weight:600;}
+    .lane .go{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:15px;color:var(--forest);transition:gap .3s var(--ease);}
+    .lane:hover .go{gap:13px;}
+
+    /* ================= VALUES ================= */
+    .vals{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,3.4vw,56px);margin-top:52px;}
+    .val h3{font-size:23px;}
+    .val p{color:var(--body);font-size:16px;margin-top:12px;}
+    .val .rule{height:1px;background:var(--border);margin-bottom:22px;}
+
+    /* ================= BIG CTA ================= */
+    .final{background:var(--forest);border-radius:var(--r-lg);padding:clamp(40px,6vw,84px) clamp(26px,4vw,64px);display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap;}
+    .final h2{color:#fff;font-size:clamp(30px,4.2vw,56px);max-width:640px;}
+    .final p{color:rgba(255,255,255,.72);margin-top:14px;}
+    .final .gold{color:var(--gold);}
+
+    /* ================= FOOTER ================= */
+    footer{padding:clamp(56px,7vw,96px) 0 40px;}
+    .foot-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:34px;}
+    .foot-brand p{color:var(--muted);font-size:14.5px;max-width:270px;margin-top:14px;}
+    .foot-brand .parent{margin-top:16px;font-size:13.5px;}
+    .foot-brand .parent a{color:var(--teal);font-weight:600;}
+    .foot-col h4{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:15px;font-family:'DM Sans',sans-serif;}
+    .foot-col a{display:block;color:var(--forest);font-size:15px;margin-bottom:11px;opacity:.85;transition:opacity .25s var(--ease);}
+    .foot-col a:hover{opacity:1;}
+    .foot-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-top:52px;padding-top:22px;border-top:1px solid var(--border);}
+    .foot-bottom span,.foot-bottom a{font-size:13.5px;color:var(--muted);}
+    .legal{display:flex;gap:18px;}
+
+    /* ---------- Reveal ---------- */
+    .js .reveal{opacity:0;transform:translateY(16px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0s);}
+    .js .reveal.in{opacity:1;transform:none;}
+    @media (prefers-reduced-motion: reduce){ .js .reveal{opacity:1;transform:none;transition:none;} }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width:1000px){
+      .mosaic{grid-template-columns:1fr;}
+      .lanes,.vals{grid-template-columns:1fr;}
+      .foot-top{grid-template-columns:1fr 1fr;}
+      .foot-brand{grid-column:1 / -1;}
+      .flow{grid-template-columns:1fr;gap:12px;}
+      .dots{transform:rotate(90deg);padding:2px 0;}
+      .flow-labels{display:none;}
+      .fcard{min-height:0;}
+    }
+    @media (max-width:760px){
+      body{font-size:16px;}
+      .nav-links{
+        position:absolute;top:86px;left:0;right:0;flex-direction:column;align-items:flex-start;gap:0;
+        background:var(--light);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:6px 0;
+        max-height:0;overflow:hidden;transition:max-height .35s var(--ease);z-index:50;
+      }
+      .nav-links.open{max-height:340px;}
+      .nav-links a{padding:13px clamp(18px,5vw,36px);width:100%;}
+      .nav-toggle{display:inline-flex;}
+      .nav-inner .btn-dark{display:none;}
+      .foot-top{grid-template-columns:1fr;}
+      .cv-labels{display:none;}
+    }
+  
+    /* ===== shared patterns for the audience pages ===== */
+    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:44px;}
+    .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px;}
+    .tpl{background:var(--light);border:1px solid var(--border);border-radius:var(--r-lg);padding:clamp(24px,2.4vw,32px);display:flex;flex-direction:column;gap:12px;min-height:262px;transition:background .3s var(--ease),transform .3s var(--ease),border-color .3s var(--ease);}
+    .tpl:hover{background:var(--keylime);transform:translateY(-4px);border-color:transparent;}
+    .tpl .idx{font-size:13.5px;color:var(--muted);}
+    .tpl h3{font-size:clamp(21px,2vw,26px);}
+    .tpl p{color:#3F524E;font-size:15.5px;}
+    .tpl .chips{display:flex;flex-wrap:wrap;gap:6px;}
+    .tpl .chip{font-size:12.5px;font-weight:500;color:var(--forest);background:var(--keylime);border-radius:6px;padding:4px 9px;}
+    .tpl:hover .chip{background:var(--light);}
+    .tpl .foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:16px;}
+    .tpl .price{font-size:15px;font-weight:600;color:var(--forest);}
+    .tpl .price.free{color:var(--teal);}
+    .tpl .go{display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:15px;color:var(--forest);transition:gap .3s var(--ease);}
+    .tpl:hover .go{gap:12px;}
+    .tpl .note{font-size:13.5px;color:var(--teal);font-weight:500;}
+    .tpl.soon{background:transparent;border-style:dashed;min-height:0;opacity:.72;}
+    .tpl.soon:hover{transform:none;background:transparent;opacity:.95;border-color:var(--border);}
+    .tpl.soon h3{font-size:19px;}
+    .soon-pill{align-self:flex-start;font-size:13px;color:var(--muted);border:1px dashed var(--border);border-radius:999px;padding:5px 12px;}
+
+    /* all-access tile */
+    .pass{background:var(--forest);border-radius:var(--r-lg);padding:clamp(24px,2.4vw,32px);display:flex;flex-direction:column;gap:12px;min-height:262px;color:rgba(255,255,255,.8);}
+    .pass h3{color:#fff;font-size:clamp(21px,2vw,26px);}
+    .pass .lbl{align-self:flex-start;background:rgba(255,255,255,.14);color:#fff;font-size:13px;font-weight:500;padding:5px 12px;border-radius:8px;}
+    .pass ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px;}
+    .pass li{font-size:14.5px;color:rgba(255,255,255,.82);display:flex;gap:9px;align-items:center;}
+    .pass li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--sage);flex:none;}
+    .pass .foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:16px;}
+    .pass .amt{font-family:'Fraunces',Georgia,serif;font-variation-settings:"SOFT" 0,"WONK" 0;font-size:30px;color:#fff;}
+
+    /* platform mosaic */
+    .plats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:34px;}
+    .plat{background:var(--keylime);border-radius:16px;padding:18px 20px;display:flex;flex-direction:column;gap:5px;transition:background .3s var(--ease);}
+    .plat:hover{background:var(--mint);}
+    .plat .n{font-family:'Fraunces',Georgia,serif;font-variation-settings:"SOFT" 0,"WONK" 0;font-size:19px;color:var(--ink);}
+    .plat .d{font-size:13.5px;color:#5C6D69;}
+    .plat.soon{background:transparent;border:1px dashed var(--border);}
+    .plat.soon:hover{background:transparent;}
+    .plat .tag{align-self:flex-start;margin-top:4px;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);}
+
+    /* two-column trust / steps */
+    .two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,60px);margin-top:40px;}
+    .quote{background:var(--light);border-radius:var(--r);padding:22px 24px;font-size:16.5px;color:#3F524E;margin-bottom:12px;}
+    .step{display:flex;gap:16px;align-items:flex-start;padding:18px 0;border-top:1px solid var(--border);}
+    .step:last-child{border-bottom:1px solid var(--border);}
+    .step .num{font-family:'Fraunces',Georgia,serif;font-variation-settings:"SOFT" 0,"WONK" 0;font-size:22px;color:var(--teal);flex:none;width:38px;}
+    .step .t{font-family:'Fraunces',Georgia,serif;font-variation-settings:"SOFT" 0,"WONK" 0;font-size:20px;color:var(--ink);}
+    .step p{font-size:15px;color:#5C6D69;margin-top:3px;}
+
+    /* credential chips */
+    .creds{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px;}
+    .cred{background:var(--light);border:1px solid var(--border);border-radius:999px;padding:10px 18px;font-size:15px;color:var(--forest);}
+
+    @media (max-width:1000px){
+      .grid3,.grid4,.plats,.two{grid-template-columns:1fr;}
+    }
+    @media (max-width:1000px) and (min-width:641px){
+      .grid4,.plats{grid-template-columns:repeat(2,1fr);}
+    }
+</style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="nav" id="top">
+    <div class="wrap nav-inner">
+      <a class="brand" href="index.html" aria-label="Salish Sea Creatives home">
+        <svg class="mark" width="30" height="30" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+          <path d="M3 17 C7 13, 9 13, 13 16 C17 19, 19 19, 23 15" stroke="#0E3A33" stroke-width="1.5" fill="none"/>
+          <path d="M4 12 C8 8.5, 10 8.5, 13 11 C16 13.5, 18 13.5, 22 10" stroke="#0E3A33" stroke-width="1.5" fill="none" opacity="0.6"/>
+          <path d="M5 7 C8.5 4.5, 10.5 4.5, 13 6.5 C15.5 8.5, 17.5 8.5, 21 6" stroke="#009689" stroke-width="1.5" fill="none" opacity="0.85"/>
+        </svg>
+        Salish Sea Creatives
+      </a>
+      <nav class="nav-links" id="navLinks" aria-label="Primary">
+        <a href="index.html">← All templates</a>
+        <a href="#templates">Templates</a>
+        <a href="#migration">Migration Tools</a>
+        <a href="#why">Why Astro</a>
+        <a href="https://github.com/salishseacreatives">GitHub</a>
+        <a href="mailto:hello@salishseacreatives.com">Contact</a>
+      </nav>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <a class="btn btn-dark" href="#templates">Browse templates</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-h">
+      <div class="wrap">
+        <div class="mosaic">
+          <div class="col">
+            <div class="tile tile-sage">
+              <span class="label on-sage">For developers</span>
+              <h1 id="hero-h" style="margin-top:20px;">Astro starters for<br />headless teams.</h1>
+              <p class="sub">Production-ready Astro templates wired to Pages CMS, Payload, Directus, and Storyblok. Every template ships the CMS schema. No bloat. No lock-in.</p>
+            </div>
+            <a class="cta-tile" href="#templates">
+              <span class="t">Browse templates</span>
+              <span class="circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
+            </a>
+          </div>
+          <div class="tile tile-slate">
+            <div class="flow">
+              <div class="fcard">
+                <span class="fchip">Astro 6</span>
+                <span class="fh">Typed schemas</span>
+                <span class="fline w80"></span><span class="fline "></span><span class="fline teal w60"></span>
+              </div>
+              <div class="dots" aria-hidden="true"><svg viewBox="0 0 44 14"><path d="M2 7h40" /></svg></div>
+              <div class="fcard">
+                <span class="fchip">TypeScript</span>
+                <span class="fh">Content collections</span>
+                <span class="fline "></span><span class="fline w60"></span><span class="fline teal w80"></span>
+              </div>
+              <div class="dots" aria-hidden="true"><svg viewBox="0 0 44 14"><path d="M2 7h40" /></svg></div>
+              <div class="fcard">
+                <span class="fchip">Tailwind v4</span>
+                <span class="fh">Static output</span>
+                <span class="fline w60"></span><span class="fline w80"></span><span class="fline teal"></span>
+              </div>
+            </div>
+            <div class="flow-labels" aria-hidden="true"><span>Typed</span><i></i><span>Content-ready</span><i></i><span>Zero JS</span></div>
+          </div>
+        </div>
+        <div style="margin-top:16px"><a class="btn btn-light" href="https://github.com/salishseacreatives">View on GitHub <span class="arr" aria-hidden="true">&rarr;</span></a></div>
+      </div>
+    </section>
+
+    <section class="statement" style="padding-bottom:0" aria-labelledby="plat-h">
+      <div class="wrap">
+        <span class="label reveal">Compatible platforms</span>
+        <p class="big reveal" id="plat-h" style="--d:.08s;max-width:800px">Three Astro pillars plus two single-template CMS pairings. Every template ships the CMS schema with it.</p>
+        <div class="plats reveal" style="--d:.14s">
+          <div class="plat"><span class="n">Pages CMS</span><span class="d">Zero cost, email invite for clients</span></div>
+          <div class="plat"><span class="n">Payload</span><span class="d">TypeScript-native, self-hosted</span></div>
+          <div class="plat"><span class="n">Directus</span><span class="d">Database-first, agency-tier</span></div>
+          <div class="plat"><span class="n">Storyblok</span><span class="d">Visual editing, agency-tier</span></div>
+          <div class="plat"><span class="n">Decap</span><span class="d">Git-based, 19K GitHub stars</span></div>
+          <div class="plat soon"><span class="n">Ghost</span><span class="d">Publishing + Content API</span><span class="tag">Soon</span></div>
+          <div class="plat soon"><span class="n">Framer</span><span class="d">Visual builder, client handoff</span><span class="tag">Soon</span></div>
+          <div class="plat soon"><span class="n">Showit</span><span class="d">Drag-and-drop, zero code</span><span class="tag">Soon</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="statement" id="templates" style="padding-bottom:clamp(40px,6vw,72px)" aria-labelledby="tpl-h">
+      <div class="wrap">
+        <span class="label quiet reveal">Templates</span>
+        <p class="big reveal" id="tpl-h" style="--d:.08s;max-width:820px">Astro templates wired to real CMS platforms. Schema ships with the template &mdash; not just a theme.</p>
+        <div class="grid3">
+          <article class="tpl reveal">
+            <span class="idx">01</span>
+            <h3>Astro + Pages CMS</h3>
+            <p>Zero-cost CMS for local service businesses. Client edits via email invite &mdash; no GitHub account needed.</p>
+            <div class="chips"><span class="chip">Astro 6</span><span class="chip">Zero CMS cost</span><span class="chip">First-mover</span></div>
+            <div class="foot">
+              <span class="price">$79</span>
+              <a class="go" href="https://salishseacreatives.gumroad.com">Buy <span aria-hidden="true">&rarr;</span></a>
+            </div>
+          </article>
+          <article class="tpl reveal">
+            <span class="idx">02</span>
+            <h3>Astro + Payload</h3>
+            <p>Premium admin UI, TypeScript-first. Self-hosted on a $5/mo VPS. Zero cloud CMS cost.</p>
+            <div class="chips"><span class="chip">Astro 6</span><span class="chip">TypeScript</span><span class="chip">Self-hosted</span></div>
+            <div class="foot">
+              <span class="price">$99&ndash;149</span>
+              <a class="go" href="https://salishseacreatives.gumroad.com">Buy <span aria-hidden="true">&rarr;</span></a>
+            </div>
+          </article>
+          <article class="tpl reveal">
+            <span class="idx">03</span>
+            <h3>Astro + Directus</h3>
+            <p>Database-first CMS for agencies. REST + GraphQL APIs, self-hosted, zero cloud cost.</p>
+            <div class="chips"><span class="chip">Astro 6</span><span class="chip">TypeScript</span><span class="chip">Agency-tier</span></div>
+            <div class="foot">
+              <span class="price">$99</span>
+              <a class="go" href="https://salishseacreatives.gumroad.com">Buy <span aria-hidden="true">&rarr;</span></a>
+            </div>
+          </article>
+          <article class="tpl reveal">
+            <span class="idx">04</span>
+            <h3>Astro + Storyblok</h3>
+            <p>Visual editing for agencies with real budgets. Includes Portage migration path.</p>
+            <div class="chips"><span class="chip">Astro 6</span><span class="chip">Visual Editor</span><span class="chip">Agency-tier</span></div>
+            <div class="foot">
+              <span class="price">$99&ndash;149</span>
+              <a class="go" href="https://salishseacreatives.gumroad.com">Buy <span aria-hidden="true">&rarr;</span></a>
+            </div>
+          </article>
+          <article class="tpl reveal">
+            <span class="idx">05</span>
+            <h3>Astro + Decap</h3>
+            <p>Capture the existing Decap installed base. Blog or portfolio &mdash; keep it simple.</p>
+            <div class="chips"><span class="chip">Astro 6</span><span class="chip">Git-based</span><span class="chip">Entry-level</span></div>
+            <div class="foot">
+              <span class="price">$79</span>
+              <a class="go" href="https://salishseacreatives.gumroad.com">Buy <span aria-hidden="true">&rarr;</span></a>
+            </div>
+          </article>
+          <article class="pass reveal">
+            <span class="lbl">All-access</span>
+            <h3>Every template, one price.</h3>
+            <ul>
+              <li>Every template, today and future</li>
+              <li>Lifetime updates</li>
+              <li>One-time payment</li>
+            </ul>
+            <div class="foot">
+              <span class="amt">$149</span>
+              <a class="btn btn-light" href="https://salishseacreatives.gumroad.com" target="_blank" rel="noopener noreferrer">Get all-access <span class="arr" aria-hidden="true">&rarr;</span></a>
+            </div>
+          </article>
+        </div>
+        <div style="margin-top:44px"><span class="label quiet">Coming soon</span></div>
+        <div class="grid4">
+          <article class="tpl soon">
+            <span class="idx">06</span>
+            <h3>Ghost theme</h3>
+            <span class="soon-pill">Coming soon</span>
+          </article>
+          <article class="tpl soon">
+            <span class="idx">07</span>
+            <h3>Framer template</h3>
+            <span class="soon-pill">Coming soon</span>
+          </article>
+          <article class="tpl soon">
+            <span class="idx">08</span>
+            <h3>Showit template</h3>
+            <span class="soon-pill">Coming soon</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="statement sage-band" id="migration" aria-labelledby="mig-h">
+      <div class="wrap">
+        <span class="label on-sage reveal">Portage &middot; Migration toolkit</span>
+        <p class="big reveal" id="mig-h" style="--d:.08s">Moving to Astro? Point Portage at your old platform and it carries your posts, pages, routes, and metadata across &mdash; structure intact.</p>
+        <div class="two reveal" style="--d:.14s">
+          <div>
+            <div class="step"><span class="num">&rarr;</span><div><span class="t">ghost2astro</span><p>Ghost &rarr; Astro</p></div></div>
+            <div class="step"><span class="num">&rarr;</span><div><span class="t">squarespace2astro</span><p>Squarespace &rarr; Astro</p></div></div>
+            <div class="step"><span class="num">&rarr;</span><div><span class="t">substack2astro</span><p>Substack &rarr; Astro</p></div></div>
+            <div class="step"><span class="num">&rarr;</span><div><span class="t">webflow2astro</span><p>Webflow &rarr; Astro</p></div></div>
+          </div>
+          <div style="align-self:center">
+            <a class="btn btn-dark" href="https://portage.tools" target="_blank" rel="noopener noreferrer">Explore Portage <span class="arr" aria-hidden="true">&rarr;</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="statement" id="why" aria-labelledby="why-h">
+      <div class="wrap">
+        <span class="label quiet reveal">Why Astro</span>
+        <p class="big reveal" id="why-h" style="--d:.08s;max-width:760px">Engineered to stay out of the way.</p>
+        <div class="vals">
+          <div class="val reveal" style="--d:.05s"><div class="rule"></div><h3>Zero JS by default</h3><p>Pages ship as static HTML. Nothing hydrates until you ask it to.</p></div>
+          <div class="val reveal" style="--d:.14s"><div class="rule"></div><h3>Content-ready architecture</h3><p>Content collections and typed schemas, wired in from the first commit.</p></div>
+          <div class="val reveal" style="--d:.23s"><div class="rule"></div><h3>Framework agnostic islands</h3><p>Drop in React, Svelte, or Vue only where the page needs them.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <section class="final reveal" aria-labelledby="cta-h">
+        <div>
+          <h2 id="cta-h">Start with <span class="gold">Pages CMS</span>.</h2>
+          <p>Astro + Pages CMS, zero CMS cost, on the Astro themes gallery.</p>
+        </div>
+        <a class="btn btn-light" href="https://astro.build/themes/" target="_blank" rel="noopener noreferrer">Get it free <span class="arr" aria-hidden="true">&rarr;</span></a>
+      </section>
+    </div>
+
+  </main>
+
+  <footer aria-label="Footer">
+    <div class="wrap">
+      <div class="foot-top">
+        <div class="foot-brand">
+          <span class="brand"><svg class="mark" width="30" height="30" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+          <path d="M3 17 C7 13, 9 13, 13 16 C17 19, 19 19, 23 15" stroke="#0E3A33" stroke-width="1.5" fill="none"/>
+          <path d="M4 12 C8 8.5, 10 8.5, 13 11 C16 13.5, 18 13.5, 22 10" stroke="#0E3A33" stroke-width="1.5" fill="none" opacity="0.6"/>
+          <path d="M5 7 C8.5 4.5, 10.5 4.5, 13 6.5 C15.5 8.5, 17.5 8.5, 21 6" stroke="#009689" stroke-width="1.5" fill="none" opacity="0.85"/>
+        </svg>
+            Salish Sea Creatives
+          </span>
+          <p>Premium templates for purposeful brands.</p>
+          <p class="parent">A product of <a href="https://salishseaconsulting.com" target="_blank" rel="noopener noreferrer">Salish Sea Consulting</a>.</p>
+        </div>
+        <div class="foot-col">
+          <h4>Templates</h4>
+          <a href="#templates">Astro + Pages CMS</a>
+          <a href="#templates">Astro + Payload</a>
+          <a href="#templates">Astro + Directus</a>
+        </div>
+        <div class="foot-col">
+          <h4>Tools</h4>
+          <a href="https://portage.tools" target="_blank" rel="noopener noreferrer">Portage</a>
+          <a href="https://portage.tools" target="_blank" rel="noopener noreferrer">ghost2astro</a>
+          <a href="https://portage.tools" target="_blank" rel="noopener noreferrer">webflow2astro</a>
+        </div>
+        <div class="foot-col">
+          <h4>Audiences</h4>
+          <a href="developers.html">Developers</a>
+          <a href="authors.html">Authors</a>
+          <a href="organizations.html">Organizations</a>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>&copy; 2026 Salish Sea Creatives. Built in the Pacific Northwest.</span>
+        <span class="legal"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">License</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      var t=document.getElementById('navToggle'),l=document.getElementById('navLinks');
+      if(t&&l){t.addEventListener('click',function(){var o=l.classList.toggle('open');t.setAttribute('aria-expanded',o?'true':'false');});
+        l.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){l.classList.remove('open');t.setAttribute('aria-expanded','false');});});}
+    })();
+    (function(){
+      var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var els=document.querySelectorAll('.reveal');
+      if(reduce||!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in');});return;}
+      var io=new IntersectionObserver(function(entries){
+        entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
+      },{threshold:0.12,rootMargin:'0px 0px -8% 0px'});
+      els.forEach(function(e){io.observe(e);});
+    })();
+  </script>
+</body>
+</html>
