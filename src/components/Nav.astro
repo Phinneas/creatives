@@ -9,7 +9,9 @@ const { page = 'home' } = Astro.props
 const contact = 'mailto:chester@salishseaconsulting.com'
 const cta = page === 'home'
   ? { href: '#lanes', label: 'Browse templates' }
-  : { href: '#templates', label: 'Browse templates' }
+  : page === 'legal'
+    ? { href: '/', label: 'Browse templates' }
+    : { href: '#templates', label: 'Browse templates' }
 ---
 
 <header class="nav" id="top">

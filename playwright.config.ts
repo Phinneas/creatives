@@ -5,13 +5,13 @@ export default defineConfig({
   timeout: 30_000,
   retries: 1,
   use: {
-    baseURL: 'http://localhost:4321',
+    baseURL: 'http://localhost:4322',
     trace: 'on-first-retry',
   },
   webServer: {
-    command: 'npm run preview',
-    port: 4321,
-    reuseExistingServer: !process.env.CI,
+    command: 'npm run preview -- --port 4322',
+    port: 4322,
+    reuseExistingServer: false,
   },
   projects: [
     {
