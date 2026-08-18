@@ -1,16 +1,15 @@
 import { test, expect } from '@playwright/test'
-import { isLenisActive } from './helpers'
+import { isLenisActive, isDesktop, isReduced } from './helpers'
 
 test.describe('Feature 1 — Smooth inertial scrolling', () => {
   test('Lenis initializes on desktop with motion allowed', async ({ page }) => {
+    test.skip(!(await isDesktop(page)) || (await isReduced(page)), 'requires desktop + motion allowed')
     await page.goto('/')
     await page.waitForLoadState('networkidle')
 
-    // Lenis should be attached
     const hasLenis = await isLenisActive(page)
     expect(hasLenis).toBe(true)
 
-    // html element carries .lenis class
     await expect(page.locator('html')).toHaveClass(/lenis/)
   })
 
@@ -18,18 +17,14 @@ test.describe('Feature 1 — Smooth inertial scrolling', () => {
     await page.goto('/')
     await page.waitForLoadState('networkidle')
 
-    // Click nav link to #templates
-    await page.click('a[href="#templates"]')
-
-    // Wait for smooth scroll
+    await page.click('a[href="#lanes"]')
     await page.waitForTimeout(1000)
 
-    // URL hash should update
-    expect(page.url()).toContain('#templates')
+    expect(page.url()).toContain('#lanes')
   })
 
   test('Lenis does not initialize on mobile', async ({ page }) => {
-    // Mobile context (390x844)
+    test.skip(await isDesktop(page), 'requires mobile viewport')
     await page.goto('/')
     await page.waitForLoadState('networkidle')
 
@@ -38,16 +33,15 @@ test.describe('Feature 1 — Smooth inertial scrolling', () => {
   })
 
   test('Reduced motion disables Lenis', async ({ page }) => {
-    // This test runs in the 'desktop-reduced' project context
+    test.skip(!(await isReduced(page)), 'requires reduced motion')
     await page.goto('/')
     await page.waitForLoadState('networkidle')
 
     const hasLenis = await isLenisActive(page)
     expect(hasLenis).toBe(false)
 
-    // Native browser scrolling should be used
-    const scrollBehavior = await page.evaluate(() =>
-      getComputedStyle(document.documentElement).scrollBehavior
+    const scrollBehavior = await page.evaluate(
+      () => getComputedStyle(document.documentElement).scrollBehavior
     )
     expect(scrollBehavior).toBe('auto')
   })

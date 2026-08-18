@@ -1,39 +1,31 @@
 import { test, expect } from '@playwright/test'
 import AxeBuilder from '@axe-core/playwright'
-import { isMotionEnabled } from './helpers'
+import { isMotionEnabled, isReduced } from './helpers'
 
 test.describe('Feature 6 — Global accessibility and fallback behavior', () => {
   test('Full reduced-motion pass', async ({ page }) => {
-    // This test runs in the 'desktop-reduced' project context
+    test.skip(!(await isReduced(page)), 'requires reduced motion')
     await page.goto('/')
     await page.waitForLoadState('networkidle')
 
-    // Lenis, ScrollTrigger, drift, and hover previews should all be inert
-    const hasLenis = await page.locator('html').evaluate((el) =>
-      el.classList.contains('lenis')
-    )
+    const hasLenis = await page.locator('html').evaluate((el) => el.classList.contains('lenis'))
     expect(hasLenis).toBe(false)
 
-    // All content should be visible and readable
-    const fxElements = page.locator('.fx')
-    const count = await fxElements.count()
+    const reveals = page.locator('.reveal')
+    const count = await reveals.count()
 
     for (let i = 0; i < count; i++) {
-      const opacity = await fxElements.nth(i).evaluate((el) =>
-        getComputedStyle(el).opacity
-      )
+      const opacity = await reveals.nth(i).evaluate((el) => getComputedStyle(el).opacity)
       expect(parseFloat(opacity)).toBe(1)
     }
 
-    // Scrolling should be native
-    const scrollBehavior = await page.evaluate(() =>
-      getComputedStyle(document.documentElement).scrollBehavior
+    const scrollBehavior = await page.evaluate(
+      () => getComputedStyle(document.documentElement).scrollBehavior
     )
     expect(scrollBehavior).toBe('auto')
   })
 
   test('No-JS pass', async ({ page }) => {
-    // Disable JavaScript
     await page.route('**/*', (route) => {
       if (route.request().url().endsWith('.js')) {
         route.abort()
@@ -45,19 +37,16 @@ test.describe('Feature 6 — Global accessibility and fallback behavior', () => 
     await page.goto('/')
     await page.waitForLoadState('networkidle')
 
-    // Every page should render all content visibly
     const body = page.locator('body')
     await expect(body).toBeVisible()
 
-    // All links and navigation should work
     const links = page.locator('a')
     const linkCount = await links.count()
     expect(linkCount).toBeGreaterThan(0)
 
-    // Check that key sections are visible
     await expect(page.locator('.hero')).toBeVisible()
-    await expect(page.locator('#templates')).toBeVisible()
-    await expect(page.locator('#migration')).toBeVisible()
+    await expect(page.locator('#lanes')).toBeVisible()
+    await expect(page.locator('#portage')).toBeVisible()
   })
 
   test('Motion does not break focus visibility', async ({ page }) => {
@@ -67,11 +56,9 @@ test.describe('Feature 6 — Global accessibility and fallback behavior', () => 
     const motionEnabled = await isMotionEnabled(page)
     if (!motionEnabled) return
 
-    // Tab through the page
     for (let i = 0; i < 10; i++) {
       await page.keyboard.press('Tab')
 
-      // Check that focus outlines are visible
       const hasOutline = await page.evaluate(() => {
         const el = document.activeElement
         if (!el) return false
@@ -83,20 +70,15 @@ test.describe('Feature 6 — Global accessibility and fallback behavior', () => 
         )
       })
 
-      // At least some elements should have visible focus
       if (i > 2) {
         expect(hasOutline).toBe(true)
       }
     }
 
-    // Parallax/drift transforms should not clip focus rings
-    const cards = page.locator('.bento-tile[data-speed]')
+    const cards = page.locator('.lane[data-speed]')
     const card = cards.first()
-
-    // Focus on card
     await card.focus()
 
-    // Focus ring should be visible (not clipped by overflow: hidden or transform)
     const outlineVisible = await card.evaluate((el) => {
       el.focus()
       const style = getComputedStyle(el)

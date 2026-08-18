@@ -25,3 +25,17 @@ export async function isMotionEnabled(page: Page): Promise<boolean> {
     return desktop && !reduced
   })
 }
+
+/**
+ * Check if the viewport is at/above the desktop motion threshold.
+ */
+export async function isDesktop(page: Page): Promise<boolean> {
+  return page.evaluate(() => window.matchMedia('(min-width: 1024px)').matches)
+}
+
+/**
+ * Check if the user prefers reduced motion.
+ */
+export async function isReduced(page: Page): Promise<boolean> {
+  return page.evaluate(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches)
+}

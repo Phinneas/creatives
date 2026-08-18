@@ -1,146 +1,166 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import Nav from '../components/Nav.astro'
-import Footer from '../components/Footer.astro'
-import HeroArt from '../components/HeroArt.astro'
 ---
 
-<Layout title="Salish Sea Creatives — Premium templates for purposeful brands">
-  <Nav page="home" />
-
+<Layout title="Salish Sea Creatives — Premium templates for purposeful brands" page="home">
   <main id="main">
-    <!-- HERO -->
+    <!-- ================= HERO MOSAIC ================= -->
     <section class="hero" aria-labelledby="hero-h">
-      <div class="hero-grid" aria-hidden="true"></div>
-      <div class="hero-depth" aria-hidden="true"></div>
-      <HeroArt />
-
       <div class="wrap">
-        <div class="hero-inner">
-          <p class="eyebrow"><span class="dot">●</span>&nbsp; 48.6° N&nbsp;&nbsp;122.9° W &nbsp;·&nbsp; Template Shop</p>
-          <h1 id="hero-h">Templates with a point of view.</h1>
-          <p class="sub fx">Three audiences. One studio. Astro + CMS starters for developers, Ghost and Framer templates for authors, and premium themes for sustainability organizations and conservation brands.</p>
-          <div class="hero-cta">
-            <a class="btn btn-primary" href="/developers">For developers <span class="arr" aria-hidden="true">→</span></a>
-            <a class="btn btn-ghost" href="/authors">For authors <span class="arr" aria-hidden="true">→</span></a>
-            <a class="btn btn-ghost" href="/organizations">For organizations <span class="arr" aria-hidden="true">→</span></a>
+        <div class="mosaic">
+          <div class="col">
+            <div class="tile tile-sage">
+              <span class="label on-sage">Pacific Northwest studio</span>
+              <h1 id="hero-h" style="margin-top:20px;">Fewer decisions.<br />More shipping.</h1>
+              <p class="sub">Astro, Ghost, and Framer templates for developers, authors, and organizations that mean it. Production-ready, not wireframes.</p>
+            </div>
+            <a class="cta-tile" href="#lanes">
+              <span class="t">Browse templates</span>
+              <span class="circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
+            </a>
+          </div>
+
+          <div class="tile tile-slate">
+            <div class="flow">
+              <div class="fcard">
+                <span class="fchip">Astro + CMS</span>
+                <span class="fh">Typed starters</span>
+                <span class="fline w80"></span>
+                <span class="fline"></span>
+                <span class="fline teal w60"></span>
+              </div>
+              <div class="dots" aria-hidden="true"><svg viewBox="0 0 44 14"><path d="M2 7h40" /></svg></div>
+              <div class="fcard">
+                <span class="fchip">Ghost + Framer</span>
+                <span class="fh">Setup included</span>
+                <span class="fline"></span>
+                <span class="fline w60"></span>
+                <span class="fline teal w80"></span>
+              </div>
+              <div class="dots" aria-hidden="true"><svg viewBox="0 0 44 14"><path d="M2 7h40" /></svg></div>
+              <div class="fcard">
+                <span class="fchip">Sustainability</span>
+                <span class="fh">Mission-ready</span>
+                <span class="fline w60"></span>
+                <span class="fline w80"></span>
+                <span class="fline teal"></span>
+              </div>
+            </div>
+            <div class="flow-labels" aria-hidden="true">
+              <span>Developers</span><i></i><span>Authors</span><i></i><span>Organizations</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- WHO THIS IS FOR -->
-    <section class="cms why" aria-label="Who Salish Sea Creatives serves">
+    <!-- ================= COMPATIBLE ================= -->
+    <section class="compat" aria-label="Compatible content platforms">
       <div class="wrap">
-        <p class="cms-label">Who this is for</p>
-        <div class="why-grid">
-          <a class="reveal fx" href="/developers" style="--d:.05s">
-            <svg class="ic" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-              <path d="M15 13l-6 7 6 7M25 13l6 7-6 7"/>
-            </svg>
-            <h3>Developers &amp; agencies</h3>
-            <p>Astro + headless CMS starters — typed, static, ready to ship. <span style="color:var(--cyan-bright);font-weight:600">Astro + CMS templates →</span></p>
+        <p>Built to pair with the headless stack you already run</p>
+        <div class="compat-row">
+          <span>Pages CMS</span><span>Payload</span><span>Directus</span><span>Storyblok</span><span>Decap</span><span>Ghost</span><span>Framer</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= THE PROBLEM ================= -->
+    <section class="statement" aria-labelledby="prob-h">
+      <div class="wrap">
+        <span class="label reveal">The problem</span>
+        <p class="big reveal" id="prob-h" style="--d:.08s">Most templates are demos. They look finished, then fall apart the moment real content, a real CMS, and a real deadline arrive.</p>
+      </div>
+    </section>
+
+    <!-- ================= THE SOLUTION / PORTAGE ================= -->
+    <section class="statement sage-band" id="portage" aria-labelledby="sol-h">
+      <div class="wrap">
+        <span class="label on-sage reveal">The solution</span>
+        <p class="big reveal" id="sol-h" style="--d:.08s">Instead of rebuilding from scratch on every platform migration, Portage carries your posts, pages, routes, and metadata across to Astro — structure intact.</p>
+
+        <div class="converge reveal" style="--d:.16s" aria-hidden="true">
+          <svg viewBox="0 0 1200 250" preserveAspectRatio="none" style="height:230px">
+            <path class="ln" d="M0 15 H560 C740 15, 820 125, 960 125" />
+            <path class="ln" d="M0 70 H580 C750 70, 830 125, 960 125" />
+            <path class="ln" d="M0 125 H960" />
+            <path class="ln" d="M0 180 H580 C750 180, 830 125, 960 125" />
+            <path class="ln" d="M0 235 H560 C740 235, 820 125, 960 125" />
+            <path class="out" d="M960 125 H1200" />
+          </svg>
+          <div class="cv-from">
+            <span style="top:6%">Ghost</span>
+            <span style="top:28%">Squarespace</span>
+            <span style="top:50%">Substack</span>
+            <span style="top:72%">Webflow</span>
+            <span style="top:94%">WordPress</span>
+          </div>
+          <span class="cv-to">One Astro site →</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= LANES ================= -->
+    <section class="statement" id="lanes" style="padding-bottom:clamp(40px,6vw,72px)" aria-labelledby="lane-h">
+      <div class="wrap">
+        <span class="label quiet reveal">Templates</span>
+        <p class="big reveal" id="lane-h" style="--d:.08s;max-width:800px">One lane per audience. Every template ships production-ready.</p>
+        <div class="lanes reveal" style="--d:.12s">
+          <a class="lane" data-speed="1" href="/developers/">
+            <span class="label quiet" style="background:var(--light);align-self:flex-start">Astro + CMS</span>
+            <h3>For developers</h3>
+            <p>Five Astro starters wired to Pages CMS, Payload, Directus, Storyblok, and Decap. Schema ships with every template.</p>
+            <span class="foot"><span class="from">From <b>Free</b></span><span class="go">Browse all <span aria-hidden="true">→</span></span></span>
           </a>
-          <a class="reveal fx" href="/authors" style="--d:.15s">
-            <svg class="ic" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-              <path d="M11 6h12l6 6v22H11z"/><path d="M15 18h11M15 24h8" opacity=".55"/>
-            </svg>
-            <h3>Authors &amp; writers</h3>
-            <p>Ghost and Framer templates for writers, bloggers, and book authors. No code. <span style="color:var(--cyan-bright);font-weight:600">Ghost + Framer templates →</span></p>
+          <a class="lane" data-speed="-1" href="/authors/">
+            <span class="label quiet" style="background:var(--light);align-self:flex-start">Ghost + Framer</span>
+            <h3>For authors</h3>
+            <p>Editorial, newsletter, and book-author templates. We handle the setup so you can write.</p>
+            <span class="foot"><span class="from">From <b>$149</b></span><span class="go">Browse all <span aria-hidden="true">→</span></span></span>
           </a>
-          <a class="reveal fx" href="/organizations" style="--d:.25s">
-            <svg class="ic" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-              <circle cx="15" cy="16" r="6"/><circle cx="26" cy="16" r="6"/><path d="M9 32c0-5 4-8 11-8s11 3 11 8" opacity=".55"/>
-            </svg>
-            <h3>Organizations</h3>
-            <p>Premium themes for sustainability orgs, conservation brands, and nonprofits. <span style="color:var(--cyan-bright);font-weight:600">Sustainability templates →</span></p>
+          <a class="lane" data-speed="2" href="/organizations/">
+            <span class="label quiet" style="background:var(--light);align-self:flex-start">Framer + Ghost</span>
+            <h3>For organizations</h3>
+            <p>Premium themes for mission-driven work, built by a studio that shares your values.</p>
+            <span class="foot"><span class="from">From <b>$249</b></span><span class="go">Browse all <span aria-hidden="true">→</span></span></span>
           </a>
         </div>
       </div>
     </section>
 
-    <!-- TEMPLATE LANES -->
-    <section class="section-pad" id="templates" aria-labelledby="tpl-h">
+    <!-- ================= VALUES ================= -->
+    <section class="statement" style="padding-top:clamp(40px,6vw,72px)" aria-labelledby="why-h">
       <div class="wrap">
-        <div class="section-head reveal">
-          <p class="eyebrow">Templates</p>
-          <h2 id="tpl-h" style="margin-top:14px;">One lane per audience. Browse the rest inside.</h2>
-          <p>Three template lanes for three audiences. Pick your lane and go deep.</p>
-        </div>
-
-        <div class="why-grid" style="margin-top:48px;">
-          <a class="bento-tile reveal fx" href="/developers" style="--d:.05s" data-speed="3" data-preview-img="/previews/developers.webp">
-            <span class="bt-name">Astro + CMS</span>
-            <span class="bt-desc">For developers &amp; agencies</span>
-            <span class="preview-link">Browse all <span aria-hidden="true">→</span></span>
-          </a>
-          <a class="bento-tile reveal fx" href="/authors" style="--d:.15s" data-speed="-1" data-preview-img="/previews/authors.webp">
-            <span class="bt-name">Ghost + Framer</span>
-            <span class="bt-desc">For authors &amp; writers</span>
-            <span class="preview-link">Browse all <span aria-hidden="true">→</span></span>
-          </a>
-          <a class="bento-tile reveal fx" href="/organizations" style="--d:.25s" data-speed="2" data-preview-img="/previews/organizations.webp">
-            <span class="bt-name">Sustainability themes</span>
-            <span class="bt-desc">For mission-driven organizations</span>
-            <span class="preview-link">Browse all <span aria-hidden="true">→</span></span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- MIGRATION / PORTAGE -->
-    <section class="section-pad migrate" id="migration" aria-labelledby="mig-h">
-      <div class="wrap migrate-grid">
-        <div class="reveal">
-          <p class="eyebrow"><span class="dot">●</span> Portage · Migration Toolkit</p>
-          <h2 id="mig-h">Moving to Astro? We built the ferry.</h2>
-          <p class="lead">Point Portage at your old platform. It carries your posts, pages, routes, and metadata across to Astro — structure intact.</p>
-          <a class="link" href="https://portage.tools" target="_blank" rel="noopener noreferrer">Explore Portage <span aria-hidden="true">→</span></a>
-        </div>
-        <div class="converters reveal" style="--d:.12s">
-          <div class="conv" data-drift-direction="left"><span class="name">ghost2<b>astro</b></span><span class="route">Ghost <span class="a">→</span> Astro</span></div>
-          <div class="conv" data-drift-direction="right"><span class="name">squarespace2<b>astro</b></span><span class="route">Squarespace <span class="a">→</span> Astro</span></div>
-          <div class="conv" data-drift-direction="left"><span class="name">substack2<b>astro</b></span><span class="route">Substack <span class="a">→</span> Astro</span></div>
-          <div class="conv" data-drift-direction="right"><span class="name">webflow2<b>astro</b></span><span class="route">Webflow <span class="a">→</span> Astro</span></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- WHY SALISH SEA CREATIVES -->
-    <section class="section-pad why" id="why" aria-labelledby="why-h">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <p class="eyebrow">The studio</p>
-          <h2 id="why-h" style="margin-top:14px;">Why Salish Sea Creatives.</h2>
-        </div>
-        <div class="why-grid">
-          <div class="reveal fx" style="--d:.05s">
-            <svg class="ic" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-              <path d="M8 21l8 8 16-18"/>
-            </svg>
+        <span class="label quiet reveal">The studio</span>
+        <p class="big reveal" id="why-h" style="--d:.08s;max-width:760px">Why Salish Sea Creatives.</p>
+        <div class="vals">
+          <div class="val reveal" style="--d:.05s">
+            <div class="rule"></div>
             <h3>Craft, not wireframes</h3>
             <p>Every template ships production-ready — real components, real content, ready to deploy. Never a half-built sketch.</p>
           </div>
-          <div class="reveal fx" style="--d:.15s">
-            <svg class="ic" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-              <path d="M30 10C16 10 10 18 10 30c12 0 20-6 20-20z"/>
-              <path d="M14 26c6-2 10-7 12-13" opacity=".55"/>
-            </svg>
+          <div class="val reveal" style="--d:.14s">
+            <div class="rule"></div>
             <h3>Pacific Northwest values</h3>
             <p>Sustainability shapes every design decision — restraint, durability, and care, built into the work.</p>
           </div>
-          <div class="reveal fx" style="--d:.25s">
-            <svg class="ic" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-              <rect x="10" y="19" width="20" height="13" rx="2"/>
-              <path d="M15 19v-4a5 5 0 0 1 9.5-2" opacity=".7"/>
-            </svg>
+          <div class="val reveal" style="--d:.23s">
+            <div class="rule"></div>
             <h3>No lock-in</h3>
             <p>No platform dependence, no vendor trap. Your site stays yours, on open tooling you control.</p>
           </div>
         </div>
       </div>
     </section>
-  </main>
 
-  <Footer />
+    <!-- ================= FINAL CTA ================= -->
+    <div class="wrap">
+      <section class="final reveal" aria-labelledby="cta-h">
+        <div>
+          <h2 id="cta-h">Start with <span class="gold">Pages CMS</span>.</h2>
+          <p>Astro + Pages CMS, zero CMS cost, on the Astro themes gallery.</p>
+        </div>
+        <a class="btn btn-light" href="https://astro.build/themes/" target="_blank" rel="noopener noreferrer">Get it free <span class="arr" aria-hidden="true">→</span></a>
+      </section>
+    </div>
+  </main>
 </Layout>

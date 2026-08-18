@@ -1,203 +1,139 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import Nav from '../components/Nav.astro'
-import Footer from '../components/Footer.astro'
-import HeroArt from '../components/HeroArt.astro'
 ---
 
 <Layout
-  title="Salish Sea Creatives — Ghost and Framer templates for authors"
-  description="Ghost and Framer templates for writers, bloggers, and book authors. No code required. Beautiful, purposeful designs for your writing career."
+  title="Ghost &amp; Framer Templates for Authors — Salish Sea Creatives"
+  description="Beautiful Ghost and Framer templates designed for writers, bloggers, and book authors. Your words deserve a home this good. Setup included."
+  page="authors"
+  footTagline="Beautiful templates for writers and authors."
+  footTemplates={[
+    { label: 'Editorial (Ghost)', href: '#templates' },
+    { label: 'Newsletter (Ghost)', href: '#templates' },
+    { label: 'Book author (Framer)', href: '#templates' },
+  ]}
 >
-  <Nav page="authors" />
-
   <main id="main">
-    <!-- HERO -->
     <section class="hero" aria-labelledby="hero-h">
-      <div class="hero-grid" aria-hidden="true"></div>
-      <div class="hero-depth" aria-hidden="true"></div>
-      <HeroArt />
-
       <div class="wrap">
-        <div class="hero-inner">
-          <p class="eyebrow"><span class="dot">●</span>&nbsp; 48.6° N&nbsp;&nbsp;122.9° W &nbsp;·&nbsp; For Authors &amp; Writers</p>
-          <h1 id="hero-h">Your writing deserves a home as intentional as your work.</h1>
-          <p class="sub">Ghost and Framer templates for writers, bloggers, and book authors. <strong>No code. No compromise.</strong> Just a site that matches the seriousness of what you make.</p>
-          <div class="hero-cta">
-            <a class="btn btn-primary" href="#templates">Browse Author Templates <span class="arr" aria-hidden="true">→</span></a>
-            <a class="btn btn-ghost" href="mailto:hello@salishseacreatives.com">Talk to us</a>
+        <div class="mosaic">
+          <div class="col">
+            <div class="tile tile-sage">
+              <span class="label on-sage">For authors</span>
+              <h1 id="hero-h" style="margin-top:20px;">Your words deserve<br />a beautiful home.</h1>
+              <p class="sub">Ghost and Framer templates designed for writers, bloggers, and book authors. No code required. We handle the setup so you can focus on writing.</p>
+            </div>
+            <a class="cta-tile" href="#templates">
+              <span class="t">Browse author templates</span>
+              <span class="circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
+            </a>
           </div>
-          <div class="hero-meta" aria-hidden="true">
-            <span class="chip"><b>Ghost</b></span>
-            <span class="chip"><b>Framer</b></span>
-            <span class="chip">No code</span>
-            <span class="chip">Memberships</span>
-            <span class="chip">Newsletter built-in</span>
+          <div class="tile tile-slate">
+            <div class="flow">
+              <div class="fcard">
+                <span class="fchip">Ghost</span>
+                <span class="fh">Editorial</span>
+                <span class="fline w80"></span><span class="fline"></span><span class="fline teal w60"></span>
+              </div>
+              <div class="dots" aria-hidden="true"><svg viewBox="0 0 44 14"><path d="M2 7h40" /></svg></div>
+              <div class="fcard">
+                <span class="fchip">Ghost</span>
+                <span class="fh">Newsletter</span>
+                <span class="fline"></span><span class="fline w60"></span><span class="fline teal w80"></span>
+              </div>
+              <div class="dots" aria-hidden="true"><svg viewBox="0 0 44 14"><path d="M2 7h40" /></svg></div>
+              <div class="fcard">
+                <span class="fchip">Framer</span>
+                <span class="fh">Book author</span>
+                <span class="fline w60"></span><span class="fline w80"></span><span class="fline teal"></span>
+              </div>
+            </div>
+            <div class="flow-labels" aria-hidden="true"><span>Write</span><i></i><span>Publish</span><i></i><span>Grow</span></div>
+          </div>
+        </div>
+        <div style="margin-top:16px"><a class="btn btn-light" href="mailto:chester@salishseaconsulting.com?subject=Template%20setup">Get it set up for me <span class="arr" aria-hidden="true">→</span></a></div>
+      </div>
+    </section>
+
+    <section class="statement sage-band" id="how" aria-labelledby="how-h">
+      <div class="wrap">
+        <span class="label on-sage reveal">How it works</span>
+        <p class="big reveal" id="how-h" style="--d:.08s;max-width:820px">Choose a template. We set it up. You start writing.</p>
+        <div class="two reveal" style="--d:.14s">
+          <div>
+            <!-- [PLACEHOLDER: author testimonial] -->
+            <div class="quote">“[PLACEHOLDER: author testimonial]”</div>
+            <div class="quote">“[PLACEHOLDER: author testimonial]”</div>
+            <div class="quote">“[PLACEHOLDER: author testimonial]”</div>
+          </div>
+          <div>
+            <div class="step"><span class="num">01</span><div><span class="t">Choose your template</span><p>Pick the Ghost or Framer template that fits your writing.</p></div></div>
+            <div class="step"><span class="num">02</span><div><span class="t">We set it up</span><p>We configure hosting, the editor, and your branding for you.</p></div></div>
+            <div class="step"><span class="num">03</span><div><span class="t">You start writing</span><p>A live site and a first post published — in 48 hours.</p></div></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PLATFORM STRIP -->
-    <section class="cms" aria-label="Platforms for authors">
+    <section class="statement" id="templates" style="padding-bottom:clamp(40px,6vw,72px)" aria-labelledby="tpl-h">
       <div class="wrap">
-        <p class="cms-label">Two platforms. Both no-code. Built for writers.</p>
-        <div class="bento">
-          <div class="bento-tile wide">
-            <span class="glyph" aria-hidden="true"></span>
-            <span class="bt-name">Ghost</span>
-            <span class="bt-desc">Built-in newsletter, memberships, and a writing-first editor. Self-host or use Ghost(Pro). The serious blogger's platform.</span>
-          </div>
-          <div class="bento-tile wide">
-            <span class="glyph" aria-hidden="true"></span>
-            <span class="bt-name">Framer</span>
-            <span class="bt-desc">Visual drag-and-drop editing. No CMS to manage. Perfect for authors who want control without complexity.</span>
-          </div>
-          <div class="bento-tile">
-            <span class="glyph" aria-hidden="true"></span>
-            <span class="bt-name">Newsletter</span>
-            <span class="bt-desc">Both platforms include it</span>
-          </div>
-          <div class="bento-tile">
-            <span class="glyph" aria-hidden="true"></span>
-            <span class="bt-name">Paid memberships</span>
-            <span class="bt-desc">Ghost native</span>
-          </div>
-          <div class="bento-tile">
-            <span class="glyph" aria-hidden="true"></span>
-            <span class="bt-name">Book pages</span>
-            <span class="bt-desc">Pre-built layouts</span>
-          </div>
-          <div class="bento-tile">
-            <span class="glyph" aria-hidden="true"></span>
-            <span class="bt-name">Press &amp; media</span>
-            <span class="bt-desc">Press kit sections</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TEMPLATES -->
-    <section class="section-pad" id="templates" aria-labelledby="tpl-h">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <p class="eyebrow">Templates</p>
-          <h2 id="tpl-h" style="margin-top:14px;">A template for every kind of writer.</h2>
-          <p>From debut novelists to established bloggers. Each template ships with setup docs and a 30-minute launch checklist.</p>
-        </div>
-
-        <div class="track" role="group" aria-label="Author templates — scroll horizontally" tabindex="0">
-
-          <article class="starter">
+        <span class="label quiet reveal">Templates</span>
+        <p class="big reveal" id="tpl-h" style="--d:.08s;max-width:800px">Templates for writers and authors. Setup included with every one.</p>
+        <div class="grid3">
+          <article class="tpl reveal">
             <span class="idx">01</span>
-            <h3>Author Platform — Ghost</h3>
-            <p class="desc">A complete author website on Ghost. Book showcase, blog, newsletter signup, press kit, and contact form. Your writing career, online.</p>
-            <div class="tags"><span class="tag">Ghost</span><span class="tag">Newsletter</span><span class="tag">Memberships</span></div>
-            <div class="starter-foot">
-              <a class="preview-link" href="#">Preview <span aria-hidden="true">→</span></a>
-              <span class="buy-group"><span class="price">$149</span><a class="buy" href="https://salishseacreatives.gumroad.com" target="_blank" rel="noopener noreferrer">Buy</a></span>
+            <h3>Editorial — Ghost</h3>
+            <p>[PLACEHOLDER: Ghost theme — editorial]</p>
+            <div class="chips"><span class="chip">Ghost</span><span class="chip">No code</span><span class="chip">Setup included</span></div>
+            <div class="foot">
+              <span class="price">$149</span>
+              <a class="go" href="mailto:chester@salishseaconsulting.com?subject=Template%20and%20setup">Get this + setup <span aria-hidden="true">→</span></a>
             </div>
           </article>
-
-          <article class="starter">
+          <article class="tpl reveal">
             <span class="idx">02</span>
-            <h3>Writing Portfolio — Framer</h3>
-            <p class="desc">A minimal, editorial Framer template for writers and journalists. Sample work, about, contact, and a link to your newsletter. Nothing unnecessary.</p>
-            <div class="tags"><span class="tag">Framer</span><span class="tag">No code</span><span class="tag">Portfolio</span></div>
-            <div class="starter-foot">
-              <a class="preview-link" href="#">Preview <span aria-hidden="true">→</span></a>
-              <span class="buy-group"><span class="price">$99</span><a class="buy" href="https://salishseacreatives.gumroad.com" target="_blank" rel="noopener noreferrer">Buy</a></span>
+            <h3>Newsletter — Ghost</h3>
+            <p>[PLACEHOLDER: Ghost theme — newsletter]</p>
+            <div class="chips"><span class="chip">Ghost</span><span class="chip">Memberships</span><span class="chip">Setup included</span></div>
+            <div class="foot">
+              <span class="price">$149</span>
+              <a class="go" href="mailto:chester@salishseaconsulting.com?subject=Template%20and%20setup">Get this + setup <span aria-hidden="true">→</span></a>
             </div>
           </article>
-
-          <article class="starter">
+          <article class="tpl reveal">
             <span class="idx">03</span>
-            <h3>Book Launch — Framer</h3>
-            <p class="desc">A single-book launch site on Framer. Full-bleed cover display, pre-order CTAs, review pulls, author bio, and retailer links. Looks premium out of the box.</p>
-            <div class="tags"><span class="tag">Framer</span><span class="tag">No code</span><span class="tag">Launch</span></div>
-            <div class="starter-foot">
-              <a class="preview-link" href="#">Preview <span aria-hidden="true">→</span></a>
-              <span class="buy-group"><span class="price">$99</span><a class="buy" href="https://salishseacreatives.gumroad.com" target="_blank" rel="noopener noreferrer">Buy</a></span>
-            </div>
-          </article>
-
-          <article class="starter soon">
-            <span class="idx">04</span>
-            <h3>Paid Newsletter — Ghost</h3>
-            <p class="desc">A Ghost theme optimized for paid newsletter growth. Conversion-focused landing page, free vs. paid content gates, and a clean reading experience.</p>
-            <div class="tags"><span class="tag">Ghost</span><span class="tag">Paid memberships</span><span class="tag">Newsletter</span></div>
-            <div class="starter-foot"><span class="soon-pill">Coming soon</span></div>
-          </article>
-
-          <article class="pass">
-            <span class="pass-label">All-access · best value</span>
-            <h3>Every author template.</h3>
-            <p class="desc">All current and future author templates. Yours to use on any site, forever.</p>
-            <div class="perks">
-              <span><i aria-hidden="true"></i> All Ghost themes</span>
-              <span><i aria-hidden="true"></i> All Framer templates</span>
-              <span><i aria-hidden="true"></i> Future releases included</span>
-              <span><i aria-hidden="true"></i> One-time payment</span>
-            </div>
-            <div class="pass-foot">
-              <span class="pass-price">$199<span>one-time</span></span>
-              <a class="btn btn-primary" href="https://salishseacreatives.gumroad.com" target="_blank" rel="noopener noreferrer">Get all-access <span class="arr" aria-hidden="true">→</span></a>
+            <h3>Book author — Framer</h3>
+            <p>[PLACEHOLDER: Framer template — book author]</p>
+            <div class="chips"><span class="chip">Framer</span><span class="chip">No code</span><span class="chip">Setup included</span></div>
+            <div class="foot">
+              <span class="price">$149</span>
+              <a class="go" href="mailto:chester@salishseaconsulting.com?subject=Template%20and%20setup">Get this + setup <span aria-hidden="true">→</span></a>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- WHY GHOST / FRAMER -->
-    <section class="section-pad why" id="why" aria-labelledby="why-h">
+    <section class="statement" style="padding-top:clamp(40px,6vw,72px)" aria-labelledby="why-h">
       <div class="wrap">
-        <div class="section-head reveal">
-          <p class="eyebrow">Why these platforms</p>
-          <h2 id="why-h" style="margin-top:14px;">The right tools for writers who want to own their work.</h2>
-        </div>
-        <div class="why-grid">
-          <div class="reveal" style="--d:.05s">
-            <svg class="ic" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-              <path d="M11 6h12l6 6v22H11z"/><path d="M15 18h11M15 24h8" opacity=".55"/>
-            </svg>
-            <h3>Writing-first by design</h3>
-            <p>Ghost's editor is built for long-form writing. No block editors, no plugins, no friction. Just you and the words.</p>
-          </div>
-          <div class="reveal" style="--d:.15s">
-            <svg class="ic" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-              <rect x="10" y="19" width="20" height="13" rx="2"/>
-              <path d="M15 19v-4a5 5 0 0 1 9.5-2" opacity=".7"/>
-            </svg>
-            <h3>You own your audience</h3>
-            <p>Your email list lives with you, not on a platform that can change its algorithm. Ghost gives you direct access to every subscriber.</p>
-          </div>
-          <div class="reveal" style="--d:.25s">
-            <svg class="ic" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-              <path d="M8 21l8 8 16-18"/>
-            </svg>
-            <h3>No code, ever</h3>
-            <p>Both platforms are designed for people who are great at writing, not coding. Set up once and focus on what you're actually good at.</p>
-          </div>
+        <span class="label quiet reveal">Why Ghost</span>
+        <p class="big reveal" id="why-h" style="--d:.08s;max-width:800px">Everything a writer needs. Nothing they don’t.</p>
+        <div class="vals">
+          <div class="val reveal" style="--d:.05s"><div class="rule"></div><h3>Ghost’s built-in editor</h3><p>Write in Ghost’s clean editor — no Markdown, no code, just writing.</p></div>
+          <div class="val reveal" style="--d:.14s"><div class="rule"></div><h3>Newsletter built in</h3><p>Ghost handles memberships and newsletters natively. Substack-style, but yours.</p></div>
+          <div class="val reveal" style="--d:.23s"><div class="rule"></div><h3>Setup included</h3><p>We configure everything. You get a live site, a working editor, and a first post published — in 48 hours.</p></div>
         </div>
       </div>
     </section>
-  </main>
 
-  <Footer
-    tagline="Ghost and Framer templates for writers who mean it."
-    col1={{ heading: 'Templates', links: [
-      { label: 'Author Platform (Ghost)', href: '#templates' },
-      { label: 'Writing Portfolio (Framer)', href: '#templates' },
-      { label: 'Book Launch (Framer)', href: '#templates' },
-    ]}}
-    col2={{ heading: 'Platforms', links: [
-      { label: 'Ghost', href: 'https://ghost.org', ext: true },
-      { label: 'Framer', href: 'https://framer.com', ext: true },
-    ]}}
-    col3={{ heading: 'Audiences', links: [
-      { label: 'Developers', href: '/developers' },
-      { label: 'Authors', href: '/authors' },
-      { label: 'Organizations', href: '/organizations' },
-    ]}}
-  />
+    <div class="wrap">
+      <section class="final reveal" aria-labelledby="cta-h">
+        <div>
+          <h2 id="cta-h">Let’s get you <span class="gold">published</span>.</h2>
+          <p>Tell us what you write. We’ll handle the rest.</p>
+        </div>
+        <a class="btn btn-light" href="mailto:chester@salishseaconsulting.com?subject=Setup%20service">Talk to us <span class="arr" aria-hidden="true">→</span></a>
+      </section>
+    </div>
+  </main>
 </Layout>

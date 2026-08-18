@@ -1,38 +1,28 @@
 ---
 interface Props {
   tagline?: string
-  col1?: { heading: string; links: { label: string; href: string; ext?: boolean }[] }
-  col2?: { heading: string; links: { label: string; href: string; ext?: boolean }[] }
-  col3?: { heading: string; links: { label: string; href: string; ext?: boolean }[] }
+  templates?: { label: string; href: string }[]
 }
 
 const {
   tagline = 'Premium templates for purposeful brands.',
-  col1 = {
-    heading: 'Templates',
-    links: [
-      { label: 'Astro + CMS', href: '/developers' },
-      { label: 'Ghost Themes', href: '/authors' },
-      { label: 'Framer Templates', href: '/authors' },
-    ],
-  },
-  col2 = {
-    heading: 'Tools',
-    links: [
-      { label: 'Portage', href: 'https://portage.tools', ext: true },
-      { label: 'ghost2astro', href: 'https://portage.tools', ext: true },
-      { label: 'webflow2astro', href: 'https://portage.tools', ext: true },
-    ],
-  },
-  col3 = {
-    heading: 'Audiences',
-    links: [
-      { label: 'Developers', href: '/developers' },
-      { label: 'Authors', href: '/authors' },
-      { label: 'Organizations', href: '/organizations' },
-    ],
-  },
+  templates = [
+    { label: 'Astro + CMS', href: '/developers/' },
+    { label: 'Ghost Themes', href: '/authors/' },
+    { label: 'Framer Templates', href: '/authors/' },
+  ],
 } = Astro.props
+
+const tools = [
+  { label: 'Portage', href: 'https://portage.tools' },
+  { label: 'ghost2astro', href: 'https://portage.tools' },
+  { label: 'webflow2astro', href: 'https://portage.tools' },
+]
+const audiences = [
+  { label: 'Developers', href: '/developers/' },
+  { label: 'Authors', href: '/authors/' },
+  { label: 'Organizations', href: '/organizations/' },
+]
 ---
 
 <footer aria-label="Footer">
@@ -40,46 +30,36 @@ const {
     <div class="foot-top">
       <div class="foot-brand">
         <span class="brand">
-          <svg class="mark" width="24" height="24" viewBox="0 0 26 26" fill="none" aria-hidden="true">
-            <path d="M3 17 C7 13, 9 13, 13 16 C17 19, 19 19, 23 15" stroke="#009689" stroke-width="1.4"/>
-            <path d="M4 12 C8 8.5, 10 8.5, 13 11 C16 13.5, 18 13.5, 22 10" stroke="#009689" stroke-width="1.4" opacity="0.65"/>
-            <path d="M5 7 C8.5 4.5, 10.5 4.5, 13 6.5 C15.5 8.5, 17.5 8.5, 21 6" stroke="#C77A0A" stroke-width="1.4" opacity="0.8"/>
+          <svg class="mark" width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+            <path d="M3 17 C7 13, 9 13, 13 16 C17 19, 19 19, 23 15" stroke="#0E3A33" stroke-width="1.5"/>
+            <path d="M4 12 C8 8.5, 10 8.5, 13 11 C16 13.5, 18 13.5, 22 10" stroke="#0E3A33" stroke-width="1.5" opacity="0.6"/>
+            <path d="M5 7 C8.5 4.5, 10.5 4.5, 13 6.5 C15.5 8.5, 17.5 8.5, 21 6" stroke="#009689" stroke-width="1.5" opacity="0.85"/>
           </svg>
           Salish Sea Creatives
         </span>
         <p>{tagline}</p>
-        <p class="parent">A product of <a href="https://salishseaconsulting.com" target="_blank" rel="noopener noreferrer">Salish Sea Consulting</a>.</p>
+        <p class="parent">A product of <a href="https://www.salishseaconsulting.com" target="_blank" rel="noopener noreferrer">Salish Sea Consulting</a>.</p>
       </div>
 
       <div class="foot-col">
-        <h4>{col1.heading}</h4>
-        {col1.links.map(l => (
-          <a href={l.href} {...l.ext ? { target: '_blank', rel: 'noopener noreferrer' } : {}}>{l.label}</a>
-        ))}
+        <h4>Templates</h4>
+        {templates.map((t) => <a href={t.href}>{t.label}</a>)}
       </div>
 
       <div class="foot-col">
-        <h4>{col2.heading}</h4>
-        {col2.links.map(l => (
-          <a href={l.href} {...l.ext ? { target: '_blank', rel: 'noopener noreferrer' } : {}}>{l.label}</a>
-        ))}
+        <h4>Tools</h4>
+        {tools.map((t) => <a href={t.href} target="_blank" rel="noopener noreferrer">{t.label}</a>)}
       </div>
 
       <div class="foot-col">
-        <h4>{col3.heading}</h4>
-        {col3.links.map(l => (
-          <a href={l.href} {...l.ext ? { target: '_blank', rel: 'noopener noreferrer' } : {}}>{l.label}</a>
-        ))}
+        <h4>Audiences</h4>
+        {audiences.map((t) => <a href={t.href}>{t.label}</a>)}
       </div>
     </div>
 
     <div class="foot-bottom">
-      <span class="copy">© {new Date().getFullYear()} Salish Sea Creatives. Built in the Pacific Northwest.</span>
-      <span class="legal">
-        <a href="/privacy">Privacy</a>
-        <a href="/terms">Terms</a>
-        <a href="/license">License</a>
-      </span>
+      <span>© {new Date().getFullYear()} Salish Sea Creatives. Built in the Pacific Northwest.</span>
+      <span class="legal"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">License</a></span>
     </div>
   </div>
 </footer>

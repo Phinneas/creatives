@@ -1,148 +1,127 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import Nav from '../components/Nav.astro'
-import Footer from '../components/Footer.astro'
-import HeroArt from '../components/HeroArt.astro'
 ---
 
 <Layout
-  title="Salish Sea Creatives — Templates for mission-driven organizations"
-  description="Premium Framer and Ghost templates designed for environmental nonprofits, conservation organizations, and sustainability brands. Built by a studio that shares your values."
+  title="Templates for Sustainability Organizations — Salish Sea Creatives"
+  description="Premium Framer and Ghost templates for environmental nonprofits, conservation brands, and sustainability-driven organizations. Pacific Northwest studio."
+  page="organizations"
+  footTagline="Premium templates for organizations that mean it."
+  footTemplates={[
+    { label: 'Environmental nonprofit (Framer)', href: '#templates' },
+    { label: 'Conservation brand (Framer)', href: '#templates' },
+    { label: 'Sustainability publisher (Ghost)', href: '#templates' },
+  ]}
 >
-  <Nav page="organizations" />
-
   <main id="main">
-    <!-- HERO -->
     <section class="hero" aria-labelledby="hero-h">
-      <div class="hero-grid" aria-hidden="true"></div>
-      <div class="hero-depth" aria-hidden="true"></div>
-      <HeroArt />
-
       <div class="wrap">
-        <div class="hero-inner">
-          <p class="eyebrow"><span class="dot">●</span>&nbsp; 48.6° N&nbsp;&nbsp;122.9° W &nbsp;·&nbsp; For Organizations</p>
-          <h1 id="hero-h">Your mission deserves a site that means it.</h1>
-          <p class="sub">Premium Framer and Ghost templates designed for environmental nonprofits, conservation organizations, and sustainability brands. <strong>Built by a studio that shares your values.</strong></p>
-          <div class="hero-cta">
-            <a class="btn btn-primary" href="#templates">Browse Organization Templates <span class="arr" aria-hidden="true">→</span></a>
-            <a class="btn btn-ghost" href="mailto:hello@salishseacreatives.com">Talk to us about setup</a>
+        <div class="mosaic">
+          <div class="col">
+            <div class="tile tile-sage">
+              <span class="label on-sage">For organizations</span>
+              <h1 id="hero-h" style="margin-top:20px;">Your mission deserves<br />a site that means it.</h1>
+              <p class="sub">Premium Framer and Ghost templates designed for environmental nonprofits, conservation organizations, and sustainability brands. Built by a studio that shares your values.</p>
+            </div>
+            <a class="cta-tile" href="#templates">
+              <span class="t">Browse organization templates</span>
+              <span class="circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
+            </a>
+          </div>
+          <div class="tile tile-slate">
+            <div class="flow">
+              <div class="fcard">
+                <span class="fchip">Framer</span>
+                <span class="fh">Nonprofit</span>
+                <span class="fline w80"></span><span class="fline"></span><span class="fline teal w60"></span>
+              </div>
+              <div class="dots" aria-hidden="true"><svg viewBox="0 0 44 14"><path d="M2 7h40" /></svg></div>
+              <div class="fcard">
+                <span class="fchip">Framer</span>
+                <span class="fh">Conservation</span>
+                <span class="fline"></span><span class="fline w60"></span><span class="fline teal w80"></span>
+              </div>
+              <div class="dots" aria-hidden="true"><svg viewBox="0 0 44 14"><path d="M2 7h40" /></svg></div>
+              <div class="fcard">
+                <span class="fchip">Ghost</span>
+                <span class="fh">Publisher</span>
+                <span class="fline w60"></span><span class="fline w80"></span><span class="fline teal"></span>
+              </div>
+            </div>
+            <div class="flow-labels" aria-hidden="true"><span>Credible</span><i></i><span>Premium</span><i></i><span>Ready</span></div>
           </div>
         </div>
+        <div style="margin-top:16px"><a class="btn btn-light" href="mailto:chester@salishseaconsulting.com?subject=Setup%20conversation">Talk to us about setup <span class="arr" aria-hidden="true">→</span></a></div>
       </div>
     </section>
 
-    <!-- CREDENTIALS STRIP -->
-    <section class="cms" id="credentials" aria-label="Studio background and credentials">
+    <section class="statement sage-band" id="credentials" aria-labelledby="cred-h">
       <div class="wrap">
-        <p class="cms-label">Studio background</p>
-        <div class="hero-meta">
-          <span class="chip">Sierra Club Washington</span>
-          <span class="chip">The Nature Conservancy</span>
-          <span class="chip">Blue Standard Certification</span>
-          <span class="chip">15+ years sustainability comms</span>
-          <span class="chip">Grant writing certified</span>
-        </div>
+        <span class="label on-sage reveal">Studio background</span>
+        <p class="big reveal" id="cred-h" style="--d:.08s;max-width:860px">We’ve spent fifteen years in sustainability communications — and volunteered alongside the organizations we build for.</p>
+        <div class="creds reveal" style="--d:.14s"><span class="cred">Sierra Club Washington</span><span class="cred">The Nature Conservancy</span><span class="cred">Blue Standard Certification</span><span class="cred">15+ years sustainability comms</span><span class="cred">Grant writing certified</span></div>
       </div>
     </section>
 
-    <!-- TEMPLATES -->
-    <section class="section-pad" id="templates" aria-labelledby="tpl-h">
+    <section class="statement" id="templates" style="padding-bottom:clamp(40px,6vw,72px)" aria-labelledby="tpl-h">
       <div class="wrap">
-        <div class="section-head reveal">
-          <p class="eyebrow">Templates</p>
-          <h2 id="tpl-h" style="margin-top:14px;">Templates built for mission-driven work.</h2>
-          <p>Premium Framer and Ghost templates for organizations that need to communicate authority and purpose.</p>
-        </div>
-
-        <div class="track" role="group" aria-label="Organization templates — scroll horizontally" tabindex="0">
-
-          <article class="starter">
+        <span class="label quiet reveal">Templates</span>
+        <p class="big reveal" id="tpl-h" style="--d:.08s;max-width:800px">Templates built for mission-driven work.</p>
+        <div class="grid3">
+          <article class="tpl reveal">
             <span class="idx">01</span>
             <h3>Environmental nonprofit — Framer</h3>
-            <p class="desc">A full-featured nonprofit template built on Framer. Donation calls-to-action, program showcases, impact stats, and board-appropriate credibility signals. No code to deploy.</p>
-            <div class="tags"><span class="tag">Framer</span><span class="tag">No code</span><span class="tag">Setup included</span></div>
-            <div class="starter-foot">
+            <p>[PLACEHOLDER: Framer — environmental nonprofit]</p>
+            <div class="chips"><span class="chip">Framer</span><span class="chip">No code</span><span class="chip">Setup included</span></div>
+            <div class="foot">
               <span class="price">$249</span>
-              <a class="buy" href="mailto:hello@salishseacreatives.com">Get this + setup →</a>
+              <a class="go" href="mailto:chester@salishseaconsulting.com?subject=Template%20and%20setup">Get this + setup <span aria-hidden="true">→</span></a>
             </div>
           </article>
-
-          <article class="starter">
+          <article class="tpl reveal">
             <span class="idx">02</span>
             <h3>Conservation brand — Framer</h3>
-            <p class="desc">Built for conservation-focused brands that need to communicate both authority and urgency. Striking imagery blocks, mission-forward copy structure, and a donation/membership CTA system.</p>
-            <div class="tags"><span class="tag">Framer</span><span class="tag">No code</span><span class="tag">Setup included</span></div>
-            <div class="starter-foot">
+            <p>[PLACEHOLDER: Framer — conservation brand]</p>
+            <div class="chips"><span class="chip">Framer</span><span class="chip">No code</span><span class="chip">Setup included</span></div>
+            <div class="foot">
               <span class="price">$249</span>
-              <a class="buy" href="mailto:hello@salishseacreatives.com">Get this + setup →</a>
+              <a class="go" href="mailto:chester@salishseaconsulting.com?subject=Template%20and%20setup">Get this + setup <span aria-hidden="true">→</span></a>
             </div>
           </article>
-
-          <article class="starter">
+          <article class="tpl reveal">
             <span class="idx">03</span>
             <h3>Sustainability publisher — Ghost</h3>
-            <p class="desc">A Ghost theme for sustainability organizations that publish — newsletters, member content, impact reports, and thought leadership. Membership support built in.</p>
-            <div class="tags"><span class="tag">Ghost</span><span class="tag">Memberships</span><span class="tag">Setup included</span></div>
-            <div class="starter-foot">
+            <p>[PLACEHOLDER: Ghost — sustainability publisher]</p>
+            <div class="chips"><span class="chip">Ghost</span><span class="chip">Memberships</span><span class="chip">Setup included</span></div>
+            <div class="foot">
               <span class="price">$249</span>
-              <a class="buy" href="mailto:hello@salishseacreatives.com">Get this + setup →</a>
+              <a class="go" href="mailto:chester@salishseaconsulting.com?subject=Template%20and%20setup">Get this + setup <span aria-hidden="true">→</span></a>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- WHY US -->
-    <section class="section-pad why" id="why" aria-labelledby="why-h">
+    <section class="statement" style="padding-top:clamp(40px,6vw,72px)" aria-labelledby="why-h">
       <div class="wrap">
-        <div class="section-head reveal">
-          <p class="eyebrow">Why us</p>
-          <h2 id="why-h" style="margin-top:14px;">Why organizations choose us.</h2>
-        </div>
-        <div class="why-grid">
-          <div class="reveal" style="--d:.05s">
-            <svg class="ic" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-              <path d="M30 10C16 10 10 18 10 30c12 0 20-6 20-20z"/>
-              <path d="M14 26c6-2 10-7 12-13" opacity=".55"/>
-            </svg>
-            <h3>Values alignment</h3>
-            <p>We've volunteered with Sierra Club Washington and The Nature Conservancy. We understand your mission because we share it.</p>
-          </div>
-          <div class="reveal" style="--d:.15s">
-            <svg class="ic" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-              <path d="M20 6l11 9-11 19L9 15z"/><path d="M9 15h22" opacity=".5"/>
-            </svg>
-            <h3>Premium design</h3>
-            <p>Your organization's credibility depends on how it presents itself. These templates communicate authority and purpose.</p>
-          </div>
-          <div class="reveal" style="--d:.25s">
-            <svg class="ic" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-              <path d="M8 21l8 8 16-18"/>
-            </svg>
-            <h3>Setup included</h3>
-            <p>We handle the technical setup. You get a live site configured, branded, and ready to publish — so your team can focus on the work that matters.</p>
-          </div>
+        <span class="label quiet reveal">Why us</span>
+        <p class="big reveal" id="why-h" style="--d:.08s;max-width:800px">Why organizations choose us.</p>
+        <div class="vals">
+          <div class="val reveal" style="--d:.05s"><div class="rule"></div><h3>Values alignment</h3><p>We’ve volunteered with Sierra Club Washington and The Nature Conservancy. We understand your mission because we share it.</p></div>
+          <div class="val reveal" style="--d:.14s"><div class="rule"></div><h3>Premium design</h3><p>Your organization’s credibility depends on how it presents itself. These templates communicate authority and purpose.</p></div>
+          <div class="val reveal" style="--d:.23s"><div class="rule"></div><h3>Setup included</h3><p>We handle the technical setup. You get a live site configured, branded, and ready to publish — so your team can focus on the work that matters.</p></div>
         </div>
       </div>
     </section>
-  </main>
 
-  <Footer
-    tagline="Premium templates for organizations that mean it."
-    col1={{ heading: 'Templates', links: [
-      { label: 'Environmental nonprofit (Framer)', href: '#templates' },
-      { label: 'Conservation brand (Framer)', href: '#templates' },
-      { label: 'Sustainability publisher (Ghost)', href: '#templates' },
-    ]}}
-    col2={{ heading: 'Studio', links: [
-      { label: 'Our credentials', href: '#credentials' },
-      { label: 'Setup Service', href: 'mailto:hello@salishseacreatives.com' },
-      { label: 'Contact', href: 'mailto:hello@salishseacreatives.com' },
-    ]}}
-    col3={{ heading: 'Audiences', links: [
-      { label: 'Developers', href: '/developers' },
-      { label: 'Authors', href: '/authors' },
-      { label: 'Organizations', href: '/organizations' },
-    ]}}
-  />
+    <div class="wrap">
+      <section class="final reveal" aria-labelledby="cta-h">
+        <div>
+          <h2 id="cta-h">Built by people who <span class="gold">share</span> your mission.</h2>
+          <p>Tell us about your organization. We’ll take it from there.</p>
+        </div>
+        <a class="btn btn-light" href="mailto:chester@salishseaconsulting.com?subject=Setup%20conversation">Talk to us <span class="arr" aria-hidden="true">→</span></a>
+      </section>
+    </div>
+  </main>
 </Layout>

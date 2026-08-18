@@ -1,84 +1,101 @@
 ---
 import '../styles/global.css'
+import Nav from '../components/Nav.astro'
+import Footer from '../components/Footer.astro'
+
+export type Page = 'home' | 'developers' | 'authors' | 'organizations'
 
 interface Props {
   title: string
   description?: string
+  page: Page
+  footTagline?: string
+  footTemplates?: { label: string; href: string }[]
 }
 
-const { title, description = 'Premium Astro, Ghost, and Framer templates for developers, authors, and sustainability-driven organizations. Pacific Northwest studio.' } = Astro.props
+const {
+  title,
+  description = 'Premium Astro, Ghost, and Framer templates for developers, authors, and sustainability-driven organizations. Pacific Northwest studio.',
+  page,
+  footTagline = 'Premium templates for purposeful brands.',
+  footTemplates = [
+    { label: 'Astro + CMS', href: '/developers/' },
+    { label: 'Ghost Themes', href: '/authors/' },
+    { label: 'Framer Templates', href: '/authors/' },
+  ],
+} = Astro.props
 ---
 
 <!doctype html>
 <html lang="en" class="no-js">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{title}</title>
-  <meta name="description" content={description} />
-  <meta name="theme-color" content="#ECF1F8" />
-  <meta name="p:domain_verify" content="b246e223200ed1a82e7d758e7bea7aa5" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content={title} />
-  <meta property="og:description" content={description} />
-  <meta property="og:site_name" content="Salish Sea Creatives" />
-  <meta property="og:url" content="https://salishseacreatives.com" />
-  <meta name="twitter:card" content="summary_large_image" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#F8F6F0" />
+    <meta name="p:domain_verify" content="b246e223200ed1a82e7d758e7bea7aa5" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content="Salish Sea Creatives" />
+    <meta property="og:url" content="https://salishseacreatives.com" />
+    <meta name="twitter:card" content="summary_large_image" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=DM+Sans:opsz,wght@9..40,400..600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=DM+Sans:opsz,wght@9..40,400..600&display=swap" rel="stylesheet" />
 
-  <script is:inline>
-    document.documentElement.classList.remove('no-js');
-    document.documentElement.classList.add('js');
-  </script>
-</head>
-<body>
-  <a class="skip" href="#main">Skip to content</a>
-  <slot />
+    <script is:inline>
+      document.documentElement.classList.remove('no-js');
+      document.documentElement.classList.add('js');
+    </script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <Nav page={page} />
+    <slot />
+    <Footer tagline={footTagline} templates={footTemplates} />
 
-  <script>
-    // Mobile nav toggle
-    const toggle = document.getElementById('navToggle')
-    const links = document.getElementById('navLinks')
-    if (toggle && links) {
-      toggle.addEventListener('click', () => {
-        const open = links.classList.toggle('open')
-        toggle.setAttribute('aria-expanded', open ? 'true' : 'false')
-      })
-      links.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => {
-          links.classList.remove('open')
-          toggle.setAttribute('aria-expanded', 'false')
+    <script>
+      // Mobile nav toggle
+      const toggle = document.getElementById('navToggle')
+      const links = document.getElementById('navLinks')
+      if (toggle && links) {
+        toggle.addEventListener('click', () => {
+          const open = links.classList.toggle('open')
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false')
         })
-      })
-    }
+        links.querySelectorAll('a').forEach((a) => {
+          a.addEventListener('click', () => {
+            links.classList.remove('open')
+            toggle.setAttribute('aria-expanded', 'false')
+          })
+        })
+      }
 
-    // Nav border on scroll
-    const nav = document.querySelector('header.nav')
-    if (nav) {
-      const update = () => nav.classList.toggle('scrolled', window.scrollY > 8)
-      update()
-      window.addEventListener('scroll', update, { passive: true })
-    }
-
-    // Reveal on scroll (legacy .reveal — kept for non-home pages)
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    const reveals = document.querySelectorAll<HTMLElement>('.reveal')
-    if (reduce || !('IntersectionObserver' in window)) {
-      reveals.forEach(el => el.classList.add('in'))
-    } else {
-      const io = new IntersectionObserver(
-        entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target) } }),
-        { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
-      )
-      reveals.forEach(el => io.observe(el))
-    }
-  </script>
-  <script>
-    // Motion system (Lenis + GSAP + drift) — gated in motion.ts
-    import '../scripts/motion.ts'
-  </script>
-</body>
+      // Reveal on scroll
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      const reveals = document.querySelectorAll<HTMLElement>('.reveal')
+      if (reduce || !('IntersectionObserver' in window)) {
+        reveals.forEach((el) => el.classList.add('in'))
+      } else {
+        const io = new IntersectionObserver(
+          (entries) =>
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                e.target.classList.add('in')
+                io.unobserve(e.target)
+              }
+            }),
+          { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
+        )
+        reveals.forEach((el) => io.observe(el))
+      }
+    </script>
+    <script>
+      // Motion system (Lenis + GSAP parallax) — gated in motion.ts
+      import '../scripts/motion.ts'
+    </script>
+  </body>
 </html>
