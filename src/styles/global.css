@@ -238,6 +238,32 @@ header.nav { background: var(--cream); }
 .val p { color: var(--body); font-size: 16px; margin-top: 12px; }
 .val .rule { height: 1px; background: var(--border); margin-bottom: 22px; }
 
+/* ================= WHY US BENTO ================= */
+.bento { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 44px; }
+.bento-card {
+  border-radius: var(--r-lg); padding: clamp(26px, 2.8vw, 36px);
+  display: flex; flex-direction: column; gap: 12px; background: var(--keylime);
+  transition: transform .3s var(--ease);
+}
+.bento-card:hover { transform: translateY(-4px); }
+.bento-card h3 { font-size: clamp(21px, 2.1vw, 26px); }
+.bento-card p { color: #3F524E; font-size: 15.5px; line-height: 1.62; }
+.bento-card.b-wide { grid-column: span 2; }
+.bento-card.b-slate { background: var(--slate); }
+.bento-card.b-mint { background: var(--mint); }
+.bento-card.b-sage { background: var(--sage); }
+.bento-card.b-dark { background: var(--forest); }
+.bento-card.b-dark h3 { color: #fff; }
+.bento-card.b-dark p { color: rgba(255, 255, 255, .78); }
+@media (max-width: 1000px) {
+  .bento { grid-template-columns: 1fr 1fr; }
+  .bento-card.b-wide { grid-column: span 2; }
+}
+@media (max-width: 680px) {
+  .bento { grid-template-columns: 1fr; }
+  .bento-card.b-wide { grid-column: span 1; }
+}
+
 /* ================= BIG CTA ================= */
 .final {
   background: var(--forest); border-radius: var(--r-lg);
