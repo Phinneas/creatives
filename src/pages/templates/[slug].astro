@@ -1,0 +1,119 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import { products, type Audience, type Product } from '../../data/products'
+
+export function getStaticPaths() {
+  return products.map((product) => ({
+    params: { slug: product.slug },
+    props: { product },
+  }))
+}
+
+interface Props {
+  product: Product
+}
+
+const { product } = Astro.props
+
+const audienceMeta: Record<Audience, { label: string; href: string; blurb: string; includes: string[] }> = {
+  developers: {
+    label: 'For developers',
+    href: '/developers/',
+    blurb: 'Production-ready, wired to a real CMS from the first commit.',
+    includes: [
+      'Astro 6 starter with a typed content schema',
+      'Static output — zero JavaScript by default',
+      'TypeScript + Tailwind v4',
+      'One-time license, no lock-in',
+    ],
+  },
+  authors: {
+    label: 'For authors',
+    href: '/authors/',
+    blurb: 'Everything a writer needs. Nothing they don’t.',
+    includes: [
+      'Setup included — we handle the technical work',
+      'No code required to publish',
+      'Built-in newsletter & memberships (Ghost)',
+      'One-time license',
+    ],
+  },
+  creatives: {
+    label: 'For creatives',
+    href: '/creatives/',
+    blurb: 'Present the work, not the chrome around it.',
+    includes: [
+      'No code (Framer) or headless (Astro)',
+      'Setup included',
+      'Built to showcase your work',
+      'One-time license',
+    ],
+  },
+}
+
+const meta = audienceMeta[product.audience]
+
+const contact = 'mailto:chester@salishseaconsulting.com'
+const buyHref = product.checkoutUrl || `${contact}?subject=${encodeURIComponent(`Template inquiry - ${product.name}`)}`
+const buyLabel = product.checkoutUrl ? 'Buy' : 'Inquire'
+---
+
+<Layout
+  title={`${product.name} — Salish Sea Creatives`}
+  description={product.description}
+  page="template"
+  canonicalPath={`/templates/${product.slug}/`}
+>
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-h">
+      <div class="wrap">
+        <a class="backlink" href={meta.href}>← {meta.label}</a>
+        <div class="mosaic">
+          <div class="col">
+            <div class="tile tile-sage">
+              <span class="label on-sage">{meta.label}</span>
+              <h1 id="hero-h" style="margin-top:20px;">{product.name}</h1>
+              <p class="sub">{product.description}</p>
+              <div class="creds" style="margin-top:24px">
+                {product.chips.map((chip) => <span class="cred">{chip}</span>)}
+              </div>
+            </div>
+            <a class="cta-tile" href={buyHref}>
+              <span class="t">{buyLabel} — {product.price}</span>
+              <span class="circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
+            </a>
+          </div>
+
+          <div class="tile tile-slate">
+            <span class="fchip">What’s included</span>
+            <ul class="inc">
+              {meta.includes.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="statement" aria-labelledby="why-h">
+      <div class="wrap">
+        <span class="label quiet reveal">Why it ships ready</span>
+        <p class="big reveal" id="why-h" style="--d:.08s;max-width:760px">{meta.blurb}</p>
+        <div class="vals">
+          <div class="val reveal" style="--d:.05s"><div class="rule"></div><h3>Production-ready</h3><p>Not a wireframe — real components, real content, ready to deploy.</p></div>
+          <div class="val reveal" style="--d:.14s"><div class="rule"></div><h3>No lock-in</h3><p>Your site stays yours, on open tooling you control.</p></div>
+          <div class="val reveal" style="--d:.23s"><div class="rule"></div><h3>Setup included</h3><p>We configure it, brand it, and hand it over — so you can ship.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <section class="final reveal" aria-labelledby="cta-h">
+        <div>
+          <h2 id="cta-h">{product.name}</h2>
+          <p>{product.price} · one-time license · digital delivery</p>
+        </div>
+        <a class="btn btn-light" href={buyHref}>{buyLabel} <span class="arr" aria-hidden="true">→</span></a>
+      </section>
+    </div>
+  </main>
+</Layout>
