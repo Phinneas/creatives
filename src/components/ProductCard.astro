@@ -1,0 +1,28 @@
+---
+import type { Product } from '../data/products'
+
+interface Props {
+  product: Product
+  idx: string
+}
+
+const { product, idx } = Astro.props
+
+const CONTACT = 'mailto:chester@salishseaconsulting.com'
+const subject = `Template inquiry - ${product.name}`
+const buyHref = product.checkoutUrl || `${CONTACT}?subject=${encodeURIComponent(subject)}`
+const buyLabel = product.checkoutUrl ? 'Buy' : 'Inquire'
+---
+
+<article class="tpl reveal">
+  <span class="idx">{idx}</span>
+  <h3>{product.name}</h3>
+  <p>{product.description}</p>
+  <div class="chips">
+    {product.chips.map((chip) => <span class="chip">{chip}</span>)}
+  </div>
+  <div class="foot">
+    <span class="price">{product.price}</span>
+    <a class="go" href={buyHref}>{buyLabel} <span aria-hidden="true">→</span></a>
+  </div>
+</article>

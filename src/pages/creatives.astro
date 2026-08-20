@@ -1,5 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro'
+import ProductCard from '../components/ProductCard.astro'
+import { products } from '../data/products'
+
+const creativeProducts = products.filter((p) => p.audience === 'creatives')
 ---
 
 <Layout
@@ -68,36 +72,9 @@ import Layout from '../layouts/Layout.astro'
         <span class="label quiet reveal">Templates</span>
         <p class="big reveal" id="tpl-h" style="--d:.08s;max-width:800px">Built to present the work, not compete with it.</p>
         <div class="grid3">
-          <article class="tpl reveal">
-            <span class="idx">01</span>
-            <h3>Portfolio — Framer</h3>
-            <p>A minimal, image-led portfolio for designers and illustrators. No code, instant polish.</p>
-            <div class="chips"><span class="chip">Framer</span><span class="chip">No code</span><span class="chip">Setup included</span></div>
-            <div class="foot">
-              <span class="price">$149</span>
-              <a class="go" href="mailto:chester@salishseaconsulting.com?subject=Template%20and%20setup">Get this + setup <span aria-hidden="true">→</span></a>
-            </div>
-          </article>
-          <article class="tpl reveal">
-            <span class="idx">02</span>
-            <h3>Studio — Framer</h3>
-            <p>A full agency site: case studies, services, and a contact pipeline built in.</p>
-            <div class="chips"><span class="chip">Framer</span><span class="chip">No code</span><span class="chip">Setup included</span></div>
-            <div class="foot">
-              <span class="price">$249</span>
-              <a class="go" href="mailto:chester@salishseaconsulting.com?subject=Template%20and%20setup">Get this + setup <span aria-hidden="true">→</span></a>
-            </div>
-          </article>
-          <article class="tpl reveal">
-            <span class="idx">03</span>
-            <h3>Case studies — Astro</h3>
-            <p>A content-first showcase for teams who write about their work. Headless, fast, yours.</p>
-            <div class="chips"><span class="chip">Astro</span><span class="chip">Headless</span><span class="chip">Setup included</span></div>
-            <div class="foot">
-              <span class="price">$149</span>
-              <a class="go" href="mailto:chester@salishseaconsulting.com?subject=Template%20and%20setup">Get this + setup <span aria-hidden="true">→</span></a>
-            </div>
-          </article>
+          {creativeProducts.map((product, i) => (
+            <ProductCard product={product} idx={String(i + 1).padStart(2, '0')} />
+          ))}
         </div>
       </div>
     </section>

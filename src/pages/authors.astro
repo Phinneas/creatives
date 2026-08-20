@@ -1,5 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro'
+import ProductCard from '../components/ProductCard.astro'
+import { products } from '../data/products'
+
+const authorProducts = products.filter((p) => p.audience === 'authors')
 ---
 
 <Layout
@@ -80,36 +84,9 @@ import Layout from '../layouts/Layout.astro'
         <span class="label quiet reveal">Templates</span>
         <p class="big reveal" id="tpl-h" style="--d:.08s;max-width:800px">Templates for writers and authors. Setup included with every one.</p>
         <div class="grid3">
-          <article class="tpl reveal">
-            <span class="idx">01</span>
-            <h3>Editorial — Ghost</h3>
-            <p>A reading-first theme for long-form essays and blogs. Generous type, a distraction-free layout, and your words front and center.</p>
-            <div class="chips"><span class="chip">Ghost</span><span class="chip">No code</span><span class="chip">Setup included</span></div>
-            <div class="foot">
-              <span class="price">$149</span>
-              <a class="go" href="mailto:chester@salishseaconsulting.com?subject=Template%20and%20setup">Get this + setup <span aria-hidden="true">→</span></a>
-            </div>
-          </article>
-          <article class="tpl reveal">
-            <span class="idx">02</span>
-            <h3>Newsletter — Ghost</h3>
-            <p>Substack-style publishing without the platform tax. Built-in memberships, a signup flow, and an issue archive — all yours.</p>
-            <div class="chips"><span class="chip">Ghost</span><span class="chip">Memberships</span><span class="chip">Setup included</span></div>
-            <div class="foot">
-              <span class="price">$149</span>
-              <a class="go" href="mailto:chester@salishseaconsulting.com?subject=Template%20and%20setup">Get this + setup <span aria-hidden="true">→</span></a>
-            </div>
-          </article>
-          <article class="tpl reveal">
-            <span class="idx">03</span>
-            <h3>Book author — Framer</h3>
-            <p>A polished one-page home for you and your book. Press links, purchase links, and a newsletter hook — no code required.</p>
-            <div class="chips"><span class="chip">Framer</span><span class="chip">No code</span><span class="chip">Setup included</span></div>
-            <div class="foot">
-              <span class="price">$149</span>
-              <a class="go" href="mailto:chester@salishseaconsulting.com?subject=Template%20and%20setup">Get this + setup <span aria-hidden="true">→</span></a>
-            </div>
-          </article>
+          {authorProducts.map((product, i) => (
+            <ProductCard product={product} idx={String(i + 1).padStart(2, '0')} />
+          ))}
         </div>
       </div>
     </section>

@@ -1,5 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro'
+import ProductCard from '../components/ProductCard.astro'
+import { products, allAccess } from '../data/products'
+
+const devProducts = products.filter((p) => p.audience === 'developers')
+const allAccessHref = allAccess.checkoutUrl || 'mailto:chester@salishseaconsulting.com?subject=All-access%20inquiry'
+const allAccessLabel = allAccess.checkoutUrl ? 'Buy all-access' : 'Inquire about all-access'
 ---
 
 <Layout
@@ -77,69 +83,20 @@ import Layout from '../layouts/Layout.astro'
         <span class="label quiet reveal">Templates</span>
         <p class="big reveal" id="tpl-h" style="--d:.08s;max-width:820px">Astro templates wired to real CMS platforms. Schema ships with the template — not just a theme.</p>
         <div class="grid3">
-          <article class="tpl reveal">
-            <span class="idx">01</span>
-            <h3>Astro + Pages CMS</h3>
-            <p>Zero-cost CMS for local service businesses. Client edits via email invite — no GitHub account needed.</p>
-            <div class="chips"><span class="chip">Astro 6</span><span class="chip">Zero CMS cost</span><span class="chip">First-mover</span><span class="chip pending">Purchase pending</span></div>
-            <div class="foot">
-              <span class="price">$79</span>
-              <a class="go" href="mailto:chester@salishseaconsulting.com?subject=Template%20inquiry%20-%20Astro%20Pages%20CMS">Inquire <span aria-hidden="true">→</span></a>
-            </div>
-          </article>
-          <article class="tpl reveal">
-            <span class="idx">02</span>
-            <h3>Astro + Payload</h3>
-            <p>Premium admin UI, TypeScript-first. Self-hosted on a $5/mo VPS. Zero cloud CMS cost.</p>
-            <div class="chips"><span class="chip">Astro 6</span><span class="chip">TypeScript</span><span class="chip">Self-hosted</span><span class="chip pending">Purchase pending</span></div>
-            <div class="foot">
-              <span class="price">$99–149</span>
-              <a class="go" href="mailto:chester@salishseaconsulting.com?subject=Template%20inquiry%20-%20Astro%20Payload">Inquire <span aria-hidden="true">→</span></a>
-            </div>
-          </article>
-          <article class="tpl reveal">
-            <span class="idx">03</span>
-            <h3>Astro + Directus</h3>
-            <p>Database-first CMS for agencies. REST + GraphQL APIs, self-hosted, zero cloud cost.</p>
-            <div class="chips"><span class="chip">Astro 6</span><span class="chip">TypeScript</span><span class="chip">Agency-tier</span><span class="chip pending">Purchase pending</span></div>
-            <div class="foot">
-              <span class="price">$99</span>
-              <a class="go" href="mailto:chester@salishseaconsulting.com?subject=Template%20inquiry%20-%20Astro%20Directus">Inquire <span aria-hidden="true">→</span></a>
-            </div>
-          </article>
-          <article class="tpl reveal">
-            <span class="idx">04</span>
-            <h3>Astro + Storyblok</h3>
-            <p>Visual editing for agencies with real budgets. Includes Portage migration path.</p>
-            <div class="chips"><span class="chip">Astro 6</span><span class="chip">Visual Editor</span><span class="chip">Agency-tier</span><span class="chip pending">Purchase pending</span></div>
-            <div class="foot">
-              <span class="price">$99–149</span>
-              <a class="go" href="mailto:chester@salishseaconsulting.com?subject=Template%20inquiry%20-%20Astro%20Storyblok">Inquire <span aria-hidden="true">→</span></a>
-            </div>
-          </article>
-          <article class="tpl reveal">
-            <span class="idx">05</span>
-            <h3>Astro + Decap</h3>
-            <p>Capture the existing Decap installed base. Blog or portfolio — keep it simple.</p>
-            <div class="chips"><span class="chip">Astro 6</span><span class="chip">Git-based</span><span class="chip">Entry-level</span><span class="chip pending">Purchase pending</span></div>
-            <div class="foot">
-              <span class="price">$79</span>
-              <a class="go" href="mailto:chester@salishseaconsulting.com?subject=Template%20inquiry%20-%20Astro%20Decap">Inquire <span aria-hidden="true">→</span></a>
-            </div>
-          </article>
+          {devProducts.map((product, i) => (
+            <ProductCard product={product} idx={String(i + 1).padStart(2, '0')} />
+          ))}
+
           <article class="pass reveal">
             <span class="lbl">All-access</span>
-            <h3>Every template, one price.</h3>
+            <h3>{allAccess.name}</h3>
             <ul>
-              <li>Every template, today and future</li>
-              <li>Lifetime updates</li>
-              <li>One-time payment</li>
+              {allAccess.perks.map((perk) => <li>{perk}</li>)}
             </ul>
             <div class="foot">
-              <span class="amt">$149</span>
-              <a class="btn btn-light" href="mailto:chester@salishseaconsulting.com?subject=All-access%20inquiry">Inquire about all-access <span class="arr" aria-hidden="true">→</span></a>
+              <span class="amt">{allAccess.price}</span>
+              <a class="btn btn-light" href={allAccessHref}>{allAccessLabel} <span class="arr" aria-hidden="true">→</span></a>
             </div>
-            <span class="pending">Purchase pending — email to inquire</span>
           </article>
         </div>
         <div style="margin-top:44px"><span class="label quiet">Coming soon</span></div>
